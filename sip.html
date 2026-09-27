@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIP — FlagAI · Joseph Hudson Jr.</title>
+<meta name="description" content="FlagAI powered by The Call AI — Joseph Hudson Jr.'s Student Innovation Project: a deterministic NFL rule engine with an advisory LLM explanation layer.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23F5B400'/%3E%3Cpath d='M9 6h4v20H9zM13 6h10l-3 5 3 5H13z' fill='%230B1F3A'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="flag"></span>Joseph Hudson Jr.<span class="brand-sub">SIP · Boards · Portfolio</span></a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+    <nav class="nav"><a href="index.html" class="">Home</a><a href="sip.html" class="active">SIP</a><a href="boards.html" class="">Boards</a><a href="projects.html" class="">Projects</a><a href="contact.html" class="">Contact</a></nav>
+  </div>
+</header>
+<main>
+
+<section class="hero compact">
+  <div class="wrap">
+    <p class="eyebrow">Student Innovation Project · SIP311</p>
+    <h1>FlagAI <span class="muted">powered by The Call AI</span></h1>
+    <p class="lead">A plain-text play description goes in. A penalty ruling, the enforcement, and the exact rule citation come out — decided by code, explained by AI.</p>
+    <nav class="subnav">
+      <a href="#claim">Innovation claim</a><a href="#description">Project description</a><a href="#architecture">Architecture</a><a href="#prototype">Prototype</a><a href="#visuals">Visuals &amp; concept art</a><a href="#code">Code</a><a href="#brief">SIP Brief</a><a href="#roadmap">Roadmap</a>
+    </nav>
+  </div>
+</section>
+
+<section class="wrap section" id="claim">
+  <h2>Innovation claim</h2>
+  <blockquote class="claim">FlagAI is the first officiating assistant that treats the NFL rulebook as <strong>executable code</strong>. A deterministic rule engine — not a language model — produces the penalty call, the yardage, and the rule citation, so every ruling is repeatable and auditable. The AI layer only explains the call in plain English; it never makes it. The result is a consistent, explainable second opinion for officials, coaches, broadcasters, and fans, delivered in under a second from a one-sentence description of the play.</blockquote>
+  <div class="three-col">
+    <div class="pill-card"><h4>What exists today</h4><p>Video-review tools that need cameras and human judgment, and chatbots that can quote rules but hallucinate rulings.</p></div>
+    <div class="pill-card"><h4>What FlagAI changes</h4><p>The ruling is computed from codified rules; the same play always gets the same answer, with a citation you can check.</p></div>
+    <div class="pill-card"><h4>Why it matters</h4><p>Officiating disputes are trust problems. Auditable logic — not opaque predictions — is how you earn trust in a call.</p></div>
+  </div>
+</section>
+
+<section class="wrap section" id="description">
+  <h2>Project description</h2>
+  <div class="two-col">
+    <div>
+      <h3>The problem</h3>
+      <p>Penalty enforcement in football is a large, interdependent rule system: what the foul is, where it happened, the down and distance, and whether fouls offset all change the outcome. Officials get it right most of the time, but when they don't, no one — not fans, not broadcasters, not even coaches — can quickly verify <em>why</em> a call was made or what the correct enforcement should be.</p>
+      <h3>The solution (SIP311 scope)</h3>
+      <p>FlagAI's minimum viable product is a <strong>text-to-ruling engine</strong>. The user types a description of the play. A parser extracts the actors and actions. A rule engine, built from the NFL rulebook encoded as structured rules, determines the foul, the penalty yardage, the enforcement spot, and whether the down is replayed — and returns the specific rule, section, and article. A large language model then produces a plain-English explanation of that ruling for a general audience.</p>
+    </div>
+    <div>
+      <h3>Who it's for</h3>
+      <ul>
+        <li><b>Officials in training</b> — practice enforcement scenarios with instant, cited feedback.</li>
+        <li><b>Coaches &amp; analysts</b> — check enforcement outcomes when preparing challenges.</li>
+        <li><b>Broadcasters &amp; fans</b> — understand a call in seconds, with the rule in hand.</li>
+      </ul>
+      <h3>Deliberately out of scope for SIP311</h3>
+      <p>Video and computer-vision detection of fouls. Peers in my SIP311 pitch review recommended narrowing to the rule-engine core first; CV becomes the future-work layer once rulings are trustworthy.</p>
+      <h3>Team</h3>
+      <p>Solo project. Design, rule encoding, engineering, and testing by Joseph Hudson Jr.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="architecture">
+  <h2>Architecture</h2>
+  <svg viewBox="0 0 900 300" class="diagram" role="img" aria-label="FlagAI architecture: play description enters a parser, then a deterministic rule engine that produces the ruling and citation; an LLM explains but does not decide.">
+<defs><marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#0B1F3A"/></marker></defs>
+<g font-family="Inter,Segoe UI,Arial" font-size="14">
+<rect x="20" y="100" width="150" height="90" rx="10" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="95" y="135" text-anchor="middle" font-weight="700" fill="#0B1F3A">Play description</text><text x="95" y="156" text-anchor="middle" fill="#334155">plain text input</text><text x="95" y="174" text-anchor="middle" fill="#334155" font-size="12">"3rd &amp; 7, DB grabs WR jersey…"</text>
+<rect x="210" y="100" width="150" height="90" rx="10" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="285" y="135" text-anchor="middle" font-weight="700" fill="#0B1F3A">Play parser</text><text x="285" y="156" text-anchor="middle" fill="#334155">extracts actors,</text><text x="285" y="174" text-anchor="middle" fill="#334155">actions, situation</text>
+<rect x="400" y="70" width="190" height="150" rx="10" fill="#0B1F3A" stroke="#F5B400" stroke-width="3"/><text x="495" y="105" text-anchor="middle" font-weight="700" fill="#F5B400" font-size="16">Deterministic</text><text x="495" y="125" text-anchor="middle" font-weight="700" fill="#F5B400" font-size="16">Rule Engine</text><text x="495" y="152" text-anchor="middle" fill="#fff">codified NFL rulebook</text><text x="495" y="172" text-anchor="middle" fill="#fff">foul → yardage → down</text><text x="495" y="192" text-anchor="middle" fill="#fff">enforcement spot</text><text x="495" y="210" text-anchor="middle" fill="#C7D2E3" font-size="12">the ruling is decided HERE</text>
+<rect x="630" y="100" width="150" height="90" rx="10" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="705" y="135" text-anchor="middle" font-weight="700" fill="#0B1F3A">Ruling + citation</text><text x="705" y="156" text-anchor="middle" fill="#334155">e.g. Defensive Holding</text><text x="705" y="174" text-anchor="middle" fill="#334155">Rule 12, Sec. 1, Art. 6</text>
+<rect x="400" y="240" width="190" height="50" rx="10" fill="#FFF7DF" stroke="#F5B400" stroke-width="2" stroke-dasharray="6 4"/><text x="495" y="260" text-anchor="middle" font-weight="700" fill="#0B1F3A">LLM (advisory only)</text><text x="495" y="278" text-anchor="middle" fill="#334155" font-size="12">plain-English explanation · never decides</text>
+<line x1="170" y1="145" x2="208" y2="145" stroke="#0B1F3A" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="360" y1="145" x2="398" y2="145" stroke="#0B1F3A" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="590" y1="145" x2="628" y2="145" stroke="#0B1F3A" stroke-width="2" marker-end="url(#ar)"/>
+<line x1="495" y1="220" x2="495" y2="238" stroke="#0B1F3A" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="590" y1="265" x2="705" y2="265" stroke="#0B1F3A" stroke-width="2" stroke-dasharray="4 3"/><line x1="705" y1="265" x2="705" y2="192" stroke="#0B1F3A" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+</g></svg>
+  <p class="caption">Figure 1 — FlagAI pipeline. The ruling is produced by deterministic logic; the language model is confined to an advisory, explanatory role.</p>
+  <div class="two-col">
+    <div>
+      <h3>Tech stack</h3>
+      <ul>
+        <li><b>Python 3 / FastAPI</b> — REST API exposing <code>POST /ruling</code></li>
+        <li><b>Rule engine</b> — rulebook encoded as structured rule objects with unit tests per rule</li>
+        <li><b>LLM layer</b> — Claude API for explanation only, with the engine's output as grounding</li>
+        <li><b>n8n</b> — automation and orchestration for batch scenario runs</li>
+        <li><b>Git / GitHub</b> — version control, CI test runs</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Design principles</h3>
+      <ul>
+        <li><b>Determinism first.</b> Same input, same ruling, every time.</li>
+        <li><b>Citation or nothing.</b> Every ruling carries rule, section, and article.</li>
+        <li><b>LLM is a narrator, not a referee.</b> It cannot alter the engine's output.</li>
+        <li><b>Testable by rule.</b> Each encoded rule has scenario tests derived from the rulebook's own examples.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="prototype">
+  <h2>Prototype / proof of concept</h2>
+  <div class="two-col">
+    <div>
+      <h3>Status</h3>
+      <table class="status">
+        <tr><th>Milestone</th><th>Status</th></tr>
+        <tr><td>Problem definition, pitch deck &amp; peer pitch review</td><td><span class="tag done">Done</span></td></tr>
+        <tr><td>Software Requirements Specification (CSC318)</td><td><span class="tag done">Done</span></td></tr>
+        <tr><td>Rule schema &amp; first rule family encoded (holding, pass interference)</td><td><span class="tag wip">In progress</span></td></tr>
+        <tr><td>Parser: play text → structured play</td><td><span class="tag wip">In progress</span></td></tr>
+        <tr><td>API endpoint + LLM explanation</td><td><span class="tag todo">Planned</span></td></tr>
+        <tr><td>Scenario test suite (50+ plays)</td><td><span class="tag todo">Planned</span></td></tr>
+        <tr><td>Demo UI for Boards</td><td><span class="tag todo">SIP411</span></td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Example interaction</h3>
+      <pre class="demo"><b>Input</b>
+2nd &amp; 8 at the OFF 35. Defensive back grabs the
+receiver's jersey 7 yards downfield before the
+pass arrives. Pass falls incomplete.
+
+<b>Ruling</b>
+Foul: Defensive Pass Interference
+Enforcement: Spot foul → ball at OFF 42
+Down: Automatic 1st down
+Citation: Rule 8, Section 5, Article 1–2
+
+<b>Explanation (LLM, advisory)</b>
+Because the contact restricted the receiver's
+ability to catch a catchable pass before it
+arrived, it is pass interference, not holding…</pre>
+      <p class="caption">Sample output format; see the interface mockup below for the target UI.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="visuals">
+  <h2>Visuals, blueprints &amp; concept art</h2>
+  <div class="gallery">
+    <figure><video class="media" src="img/flagai-logo-reveal.mp4" autoplay muted loop playsinline poster="img/flagai-logo.png"></video><figcaption>FlagAI logo reveal (animated concept, 20 s).</figcaption></figure>
+    <figure><img class="media" src="img/flagai-logo.png" alt="FlagAI shield logo: white starburst and football on a navy and red shield"><figcaption>FlagAI division mark — shield, starburst, and football.</figcaption></figure>
+    <figure><a href="img/mvp-architecture.png" target="_blank"><img class="media" src="img/mvp-architecture.png" alt="FlagAI MVP architecture flow"></a><figcaption>MVP architecture flow from the SIP311 pitch deck (slide 10).</figcaption></figure>
+    <figure><a href="img/mockup-ruling.png" target="_blank"><img class="media" src="img/mockup-ruling.png" alt="Early-stage prototype ruling interface mockup"></a><figcaption>Early-stage prototype: ruling interface mockup (slide 11).</figcaption></figure>
+    <figure><a href="img/uml-usecase.png" target="_blank"><img class="media" src="img/uml-usecase.png" alt="GridironIQ use case diagram"></a><figcaption>Use case diagram — SRS Figure 1 (§5.2).</figcaption></figure>
+    <figure><a href="img/uml-domain.png" target="_blank"><img class="media" src="img/uml-domain.png" alt="GridironIQ UML domain model"></a><figcaption>UML domain model — SRS Figure 2 (§6.1).</figcaption></figure>
+    <figure><a href="img/uml-agents.png" target="_blank"><img class="media" src="img/uml-agents.png" alt="GridironIQ agent subsystem class diagram"></a><figcaption>Agent subsystem class diagram — SRS Figure 3 (§6.2).</figcaption></figure>
+    <figure><div class="placeholder tall"><span>Logo — The Call AI masterbrand<br><small>img/thecallai-logo.png</small></span></div><figcaption>The Call AI parent brand mark (in progress).</figcaption></figure>
+  </div>
+  <h3>The Call AI ecosystem (vision)</h3>
+  <p>FlagAI is the football division of a multi-sport officiating platform, each division named for its sport's core officiating mechanism:</p>
+  <div class="chips"><span>Flag.AI · football</span><span>Card.AI / Pitch.AI · soccer</span><span>Whistle.AI / Foul.AI · basketball</span><span>Zone.AI / Strike.AI · baseball</span><span>Box.AI / Crease.AI · hockey</span><span>Line.AI / Fault.AI · tennis</span><span>Sector.AI / Steward.AI · motorsport</span><span>Judge.AI · combat sports</span></div>
+</section>
+
+<section class="wrap section" id="code">
+  <h2>Code &amp; documents</h2>
+  <div class="cards">
+    <a class="card" href="https://github.com/TheBlackPanther616/flagai" target="_blank" rel="noopener"><h3>GitHub — flagai</h3><p>Rule engine, parser, API, and tests. (Public repo link — update when pushed.)</p></a>
+    <a class="card" href="docs/Hudson_Module13_FinalProject_SRS.pdf" target="_blank"><h3>Software Requirements Specification</h3><p>GridironIQ SRS v1.0 (CSC318, 16 pp.): 6 objectives, 11 functional + 6 non-functional requirements, use case model, UML domain and agent diagrams, glossary, traceability matrix.</p></a>
+    <a class="card" href="docs/Hudson_SIP311_Pitch.pdf" target="_blank"><h3>SIP311 pitch deck</h3><p>"FlagAI powered by The Call AI" — 11 slides: problem, innovation claim, scope, target market, prior art, MVP architecture, prototype. <span class="muted">(PDF; the PPTX is in docs/)</span></p></a>
+    <a class="card" href="https://www.youtube.com/@josephhudson1125" target="_blank" rel="noopener"><h3>Video — n8n automations</h3><p>Walkthrough of the automation behind FlagAI (in production).</p></a>
+  </div>
+</section>
+
+<section class="wrap section" id="brief">
+  <h2>SIP Brief</h2>
+  <div class="brief-box">
+    <p><strong>Placeholder — SIP Brief (Week 4 assignment).</strong> The completed brief will be embedded here and available as a subpage.</p>
+    <a class="btn" href="sip-brief.html">Open SIP Brief subpage →</a>
+  </div>
+</section>
+
+<section class="wrap section" id="roadmap">
+  <h2>Roadmap to SIP411 Boards</h2>
+  <ol class="timeline">
+    <li><b>SIP311 · Weeks 1–4</b> Pitch, website, SIP Brief, innovation claim locked.</li>
+    <li><b>SIP311 · Weeks 5–10</b> Rule schema, first rule families, parser, scenario tests.</li>
+    <li><b>SIP311 · Weeks 11–15</b> API + LLM explanation layer, demo video, executability review for SIP408.</li>
+    <li><b>SIP408</b> Build-out: broader rule coverage, UI, user testing with officials/coaches.</li>
+    <li><b>SIP411 · Boards</b> Live demo, objectives evidence, and defense.</li>
+  </ol>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>© 2026 Joseph Hudson Jr. · University of Advancing Technology · SIP311 Student Innovation Project I</div>
+    <div class="social">
+      <a href="https://www.linkedin.com/in/joseph-hudson-7b067147/" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+      <a href="https://github.com/TheBlackPanther616" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+      <a href="https://www.youtube.com/@josephhudson1125" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
