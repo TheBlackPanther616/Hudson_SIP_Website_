@@ -1,0 +1,28 @@
+graph TB
+    subgraph Client["Client Device"]
+        Browser["Web Browser<br/><i>HTML + JS presentation layer</i>"]
+    end
+
+    subgraph Server["Application Host — Linux / Python 3.11"]
+        subgraph Proc["uvicorn process"]
+            APP["FastAPI Application<br/><i>app.main:app</i>"]
+            APILAYER["API layer<br/><i>routers + schemas</i>"]
+            SVCLAYER["Service layer<br/><i>parser, engine, advisor</i>"]
+            DATALAYER["Data layer<br/><i>repositories + ORM</i>"]
+        end
+        DBFILE[("SQLite volume<br/><i>gridironiq.db</i>")]
+    end
+
+    subgraph External["External Boundary — untrusted network"]
+        ANTHROPIC["Anthropic Messages API<br/><i>advisory notes only</i>"]
+    end
+
+    Browser -->|"HTTPS / JSON"| APP
+    APP --> APILAYER
+    APILAYER -->|"in-process call"| SVCLAYER
+    SVCLAYER -->|"in-process call"| DATALAYER
+    DATALAYER -->|"SQLAlchemy / file I/O"| DBFILE
+    SVCLAYER -.->|"HTTPS, 20s timeout,<br/>failure degrades to no note"| ANTHROPIC
+
+    classDef boundary stroke-dasharray: 5 5
+    class External boundary

@@ -20,26 +20,55 @@
 
 <section class="hero compact"><div class="wrap">
   <p class="eyebrow"><a href="sip.html">← Back to SIP</a></p>
-  <h1>SIP Brief <span class="muted">— FlagAI</span></h1>
-  <p class="lead">Placeholder for the Week 4 SIP Brief assignment.</p>
+  <h1>SIP Innovation Brief <span class="muted">— FlagAI</span></h1>
+  <p class="lead">FlagAI: A Referee Game-Day Assistant. Part 1 complete (SIP311); Parts 2 and 3 are written in SIP408 and SIP409.</p>
+  <div class="cta-row"><a class="btn" href="docs/Hudson_SIP_Innovation_Brief.pdf" target="_blank">Open the PDF</a></div>
 </div></section>
+
 <section class="wrap section">
-  <div class="brief-box">
-    <p>When the SIP Brief is complete, embed the PDF here (drop it in <code>docs/Hudson_SIP_Brief.pdf</code>) — the frame below will pick it up automatically.</p>
-    <iframe class="pdf" src="docs/Hudson_SIP_Brief.pdf" title="SIP Brief PDF"></iframe>
+  <div class="two-col">
+    <div>
+      <h2>Technical field</h2>
+      <p>Artificial Intelligence (rule-based expert systems and knowledge representation), Web Application Development, and Sports Technology, focused on decision support for football officiating.</p>
+      <h2>Background</h2>
+      <p>Officials must identify a foul, determine its enforcement, and manage the clock within seconds while applying a rulebook of 19 rules, each divided into sections and articles. Amateur crews often work without replay or a rules expert on site. The idea grew out of my coursework research on AI in professional football officiating and 13 years as a Navy Electrician's Mate, where standardized technical manuals guide time-critical decisions: officiating benefits from a fast, authoritative reference that returns a traceable answer rather than an opinion. Peer and SME review then refocused the concept from a penalty-call assistant into a referee-facing game-day app, because rule lookups alone are already available through general-purpose AI tools.</p>
+    </div>
+    <figure class="fig" style="margin:0"><a href="img/brief-wireframe.png" target="_blank"><img class="media" src="img/brief-wireframe.png" alt="Concept wireframe of the FlagAI referee game-day console"></a><figcaption class="caption">Figure 1. Concept wireframe of the game-day console: game timing, play ruling with rule citation, and rosters (illustrative data).</figcaption></figure>
   </div>
-  <h2>Brief outline (draft headings)</h2>
-  <ol>
-    <li>Project title &amp; one-sentence summary</li>
-    <li>Problem statement</li>
-    <li>Innovation claim</li>
-    <li>Target users &amp; market context</li>
-    <li>Proposed solution &amp; prototype scope</li>
-    <li>Resource needs (tools, data, time)</li>
-    <li>Executability assessment for SIP408</li>
-    <li>Risks &amp; mitigations</li>
-    <li>Milestones through SIP411</li>
+</section>
+
+<section class="section alt"><div class="wrap">
+  <h2>Innovation claim</h2>
+  <blockquote class="claim">This project is innovative because it unites a <strong>deterministic, citation-producing football penalty rule engine</strong> with <strong>roster and game-clock management</strong> in a single referee-facing application, so every ruling is repeatable, traceable to a specific rule, section, and article, and immediately reflected in the game state. Unlike general-purpose AI chatbots or static digital rulebooks, FlagAI returns the same verifiable answer for the same play every time.</blockquote>
+  <div class="two-col" style="margin-top:24px">
+    <div>
+      <h3>Project description</h3>
+      <p>A web-based game-day assistant for football officials, built in Python with Flask, combining three functions in one console: a deterministic rule engine (plain-text play in → foul, responsible player, enforcement, and rule-section-article citation out, written as original code rather than reproduced rulebook text); a roster module that attributes each foul to a player number and records it in a foul log; and a game-timing module for the game clock, play clock, quarters, and timeouts. The MVP uses professional football playing rules, and the engine is modular so other rule sets, such as high school rules, can be added.</p>
+    </div>
+    <div>
+      <h3>Usage scenario</h3>
+      <p>At a preseason clinic, an officiating association loads written play descriptions drawn from game film. Trainees record their rulings, and each is compared with the engine's determination and citation. Because the engine is deterministic, every trainee is measured against the same standard, and instructors can see which rule areas — pass interference, enforcement spots — produce the most errors. Crews use the same workflow after games to confirm disputed enforcements for evaluator reports. Rules coordinators, coaches, and broadcast analysts can test rule changes and verify explanations.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="wrap section">
+  <h2>Prior art (references)</h2>
+  <ol class="refs">
+    <li>National Football League. (2026). <i>2026 NFL rulebook</i>. NFL Football Operations. <a href="https://operations.nfl.com/the-rules/nfl-rulebook/" target="_blank" rel="noopener">operations.nfl.com</a></li>
+    <li>National Federation of State High School Associations. (2025). <i>NFHS Digital</i> [Mobile app]. App Store. <a href="https://apps.apple.com/us/app/nfhs-digital/id6746011559" target="_blank" rel="noopener">apps.apple.com</a></li>
+    <li>REFSIX. (n.d.). <i>REFSIX: The app for football/soccer referees</i>. <a href="https://refsix.com/" target="_blank" rel="noopener">refsix.com</a></li>
+    <li>Arbiter. (n.d.). <i>Referee assigning software</i>. <a href="https://arbiter.io/referee-assigning-software/" target="_blank" rel="noopener">arbiter.io</a></li>
+    <li>National Football League. (2025). <i>Sony's Hawk-Eye Innovations selected by NFL to revolutionize line to gain measurements</i>. NFL.com. <a href="https://www.nfl.com/news/sony-s-hawk-eye-innovations-selected-by-nfl-to-revolutionize-line-to-gain-measurements" target="_blank" rel="noopener">nfl.com</a></li>
+    <li>FIFA. (2022). <i>Semi-automated offside technology</i>. Inside FIFA. <a href="https://inside.fifa.com/innovation/world-cup-2022/semi-automated-offside-technology" target="_blank" rel="noopener">inside.fifa.com</a></li>
+    <li>OpenAI. (2026). <i>ChatGPT</i> [Large language model]. <a href="https://chatgpt.com/" target="_blank" rel="noopener">chatgpt.com</a></li>
+    <li>Martín Moncunill, D., Sampedro Lirio, D., &amp; Bravo Hijón, M. Á. (2026). Possibilities of artificial intelligence in sports refereeing: An exploratory study contrasting the literature review with expert-perceived opportunities. <i>Multimodal Technologies and Interaction, 10</i>(3), 30. <a href="https://doi.org/10.3390/mti10030030" target="_blank" rel="noopener">doi.org/10.3390/mti10030030</a></li>
+    <li>Dowsett, B. (2024, May 2). AI is helping referee games in major sports leagues, but limitations remain. <i>Scientific American</i>. <a href="https://www.scientificamerican.com/article/ai-is-helping-referee-games-in-major-sports-leagues-but-limitations-remain/" target="_blank" rel="noopener">scientificamerican.com</a></li>
   </ol>
+  <p class="caption">How FlagAI differs from each source is summarized on the <a href="sip.html#prior-art">SIP page</a> and detailed in the PDF.</p>
+
+  <h2 style="margin-top:30px">Full document</h2>
+  <iframe class="pdf" src="docs/Hudson_SIP_Innovation_Brief.pdf" title="SIP Innovation Brief PDF"></iframe>
 </section>
 
 </main>

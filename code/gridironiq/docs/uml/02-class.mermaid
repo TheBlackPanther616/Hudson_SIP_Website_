@@ -1,0 +1,103 @@
+classDiagram
+    direction LR
+
+    class PlayFacts {
+        +PlayType play_type
+        +str raw_text
+        +bool ball_thrown
+        +bool pass_was_catchable
+        +bool contact_with_receiver_before_ball_arrival
+        +int players_on_line_of_scrimmage
+        +as_dict() dict
+    }
+
+    class Rule {
+        +str code
+        +str name
+        +str citation
+        +int yards
+        +bool automatic_first_down
+        +int priority
+        +Callable predicate
+        +evaluate(PlayFacts) RuleMatch
+    }
+
+    class RuleMatch {
+        +str code
+        +str citation
+        +int yards
+        +str rationale
+        +bool spot_foul
+    }
+
+    class PenaltyDecision {
+        +bool is_penalty
+        +List~RuleMatch~ matches
+        +float confidence
+        +str advisor_note
+        +primary() RuleMatch
+    }
+
+    class PlayParser {
+        <<module>>
+        +parse(str) PlayFacts
+        +detect_play_type(str) PlayType
+    }
+
+    class RuleEngine {
+        -List~Rule~ _rules
+        +evaluate(PlayFacts) PenaltyDecision
+        +score(PlayFacts, List) float
+    }
+
+    class PenaltyAdvisor {
+        <<interface>>
+        +review(PlayFacts, List) str
+    }
+
+    class ClaudeAdvisor {
+        +review(PlayFacts, List) str
+    }
+
+    class FakePenaltyAdvisor {
+        +review(PlayFacts, List) str
+    }
+
+    class AnalysisService {
+        -RuleEngine _engine
+        -PenaltyAdvisor _advisor
+        -CallRepository _repository
+        +analyze(str, bool) AnalysisResult
+    }
+
+    class CallRepository {
+        -Session _session
+        +save(PlayFacts, PenaltyDecision) int
+        +get(int) PenaltyCallRecord
+        +history(int, str) List
+    }
+
+    class RuleRepository {
+        +seed() int
+        +list_all() List
+    }
+
+    class PenaltyCallRecord {
+        +int id
+        +bool is_penalty
+        +str primary_code
+        +float confidence
+    }
+
+    PlayParser ..> PlayFacts : creates
+    RuleEngine o-- Rule : evaluates
+    Rule ..> RuleMatch : produces
+    RuleEngine ..> PenaltyDecision : returns
+    PenaltyDecision *-- RuleMatch
+    AnalysisService --> RuleEngine
+    AnalysisService --> PenaltyAdvisor
+    AnalysisService --> CallRepository
+    PenaltyAdvisor <|.. ClaudeAdvisor
+    PenaltyAdvisor <|.. FakePenaltyAdvisor
+    CallRepository ..> PenaltyCallRecord : persists
+    RuleRepository ..> Rule : seeds
