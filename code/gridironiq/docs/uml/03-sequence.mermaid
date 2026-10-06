@@ -1,0 +1,40 @@
+sequenceDiagram
+    autonumber
+    actor Official
+    participant UI as Browser UI
+    participant API as PlaysRouter<br/>(API layer)
+    participant SVC as AnalysisService<br/>(service layer)
+    participant PAR as PlayParser
+    participant ENG as RuleEngine
+    participant ADV as PenaltyAdvisor
+    participant REPO as CallRepository<br/>(data layer)
+    participant DB as SQLite
+
+    Official->>UI: Enter play description
+    UI->>API: POST /api/plays {description}
+    API->>API: Validate via PlaySubmission schema
+    alt description shorter than 10 chars
+        API-->>UI: 422 Unprocessable Entity
+    else valid
+        API->>SVC: analyze(description, persist)
+        SVC->>PAR: parse(description)
+        PAR-->>SVC: PlayFacts
+        SVC->>ENG: evaluate(facts)
+        loop each rule by priority
+            ENG->>ENG: rule.predicate(facts)
+        end
+        ENG-->>SVC: PenaltyDecision
+        SVC->>ADV: review(facts, codes)
+        alt advisor reachable
+            ADV-->>SVC: advisory note
+        else network failure or no API key
+            ADV-->>SVC: empty string
+        end
+        SVC->>REPO: save(facts, decision)
+        REPO->>DB: INSERT play, call, rule refs
+        DB-->>REPO: call_id
+        REPO-->>SVC: call_id
+        SVC-->>API: AnalysisResult
+        API-->>UI: 201 {is_penalty, matches, citation, confidence}
+        UI-->>Official: Display call with rule and rationale
+    end

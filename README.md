@@ -1,24 +1,18 @@
-# Joseph Hudson Jr. — SIP / Boards Website (SIP311)
+# Joseph Hudson Jr. — SIP / Boards Website
 
-Static site: no build step, no framework. Six pages + one stylesheet.
+Hand-coded static site (HTML/CSS, no build step) for the UAT Student Innovation Project sequence (SIP311 → SIP411), hosted on GitHub Pages.
 
-## Publish on GitHub Pages (≈5 minutes)
-1. Create a new **public** repo named `YOUR-GITHUB.github.io` (site at the root URL) — or any name, e.g. `sip-site` (site at `https://YOUR-GITHUB.github.io/sip-site/`).
-2. Upload everything in this folder (drag-and-drop on github.com works, or `git add . && git commit -m "SIP site" && git push`).
-3. Repo → **Settings → Pages → Source: Deploy from a branch → main / (root) → Save**.
-4. Wait ~1 minute; the URL appears at the top of the Pages settings. Paste it in the discussion post.
-
-## Before you post — find-and-replace these placeholders
-| Placeholder | Where | Replace with |
-|---|---|---|
-| `YOUR-GITHUB` | all pages (footer, SIP, Projects, Contact) | your GitHub username |
-| `YOUR-FORM-ID` | contact.html | free Formspree endpoint (formspree.io → New form → copy the /f/xxxx id). Until then the form has no backend. |
-
-
-## Images and documents to drop in
-- Headshot is already in place (`img/headshot.png`).
-- `img/` — logos, UML, mockup, n8n screenshot (names listed on each placeholder). Replace each `<div class="placeholder ...">` with `<img src="img/name.png" alt="...">`.
-- SRS PDF, pitch deck (PDF + PPTX), logo video and stills, and UML figures are already in `docs/` and `img/`. Still to add: `docs/Hudson_SIP_Brief.pdf` (SIP Brief subpage embeds it automatically) and `img/thecallai-logo.png`.
+**Live:** https://theblackpanther616.github.io/Hudson_SIP_Website_/
 
 ## Pages
-index · sip (with #claim #description #architecture #prototype #visuals #code #brief #roadmap) · sip-brief · boards · projects · contact
+- **Home** — bio, headshot, project photo gallery, site map
+- **SIP** — FlagAI powered by The Call AI: innovation claim, how the project evolved (Round 1 → Round 2), project description, architecture, prototype and working code, code and documents, visuals, prior art, SIP Brief, roadmap
+- **SIP Brief** — SIP Innovation Brief Part 1 (HTML summary + embedded PDF)
+- **Boards** — six program objectives for each major (UAT 2026 Catalog), mapped to evidence
+- **Projects** — GridironIQ engine and SRS, HeroVerse AI, Cape Clash, AI Avatars, generative media sites, C# OOP, C++ data structures, mediacast pipeline
+- **Contact** — emails, Formspree inquiry form, social links
+
+## Repository layout
+- `docs/` — SIP Innovation Brief, Round 1 and Round 2 pitch decks, CSC318 SRS
+- `img/` — screenshots, diagrams, logo assets
+- `code/gridironiq/` — the GridironIQ rule engine (Python) that FlagAI is built on. See its README to run it and its tests (50 passing).

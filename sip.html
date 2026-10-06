@@ -20,123 +20,152 @@
 
 <section class="hero compact">
   <div class="wrap">
-    <p class="eyebrow">Student Innovation Project · SIP311</p>
+    <p class="eyebrow">Student Innovation Project · SIP311 → SIP408 → SIP411</p>
     <h1>FlagAI <span class="muted">powered by The Call AI</span></h1>
-    <p class="lead">A plain-text play description goes in. A penalty ruling, the enforcement, and the exact rule citation come out — decided by code, explained by AI.</p>
+    <p class="lead">A game-day referee app that puts <strong>rules, rosters, and game timing</strong> in one screen. The official types the play in plain English; FlagAI returns the foul, the enforced result against the live game state, and the rule-section-article citation — decided by code, explained by AI.</p>
+    <div class="badges">
+      <span class="badge ok">Round 2 re-pitch · Oct 2026</span>
+      <span class="badge ok">NFL rule set approved by instructor · Sept 29, 2026</span>
+      <span class="badge">Solo project · Python + Flask</span>
+    </div>
     <nav class="subnav">
-      <a href="#claim">Innovation claim</a><a href="#description">Project description</a><a href="#architecture">Architecture</a><a href="#prototype">Prototype</a><a href="#visuals">Visuals &amp; concept art</a><a href="#code">Code</a><a href="#brief">SIP Brief</a><a href="#roadmap">Roadmap</a>
+      <a href="#claim">Innovation claim</a><a href="#evolution">How it evolved</a><a href="#description">Project description</a><a href="#architecture">Architecture</a><a href="#prototype">Prototype &amp; working code</a><a href="#code">Code &amp; documents</a><a href="#visuals">Visuals</a><a href="#prior-art">Prior art</a><a href="#brief">SIP Brief</a><a href="#roadmap">Roadmap</a>
     </nav>
   </div>
 </section>
 
 <section class="wrap section" id="claim">
   <h2>Innovation claim</h2>
-  <blockquote class="claim">FlagAI is the first officiating assistant that treats the NFL rulebook as <strong>executable code</strong>. A deterministic rule engine — not a language model — produces the penalty call, the yardage, and the rule citation, so every ruling is repeatable and auditable. The AI layer only explains the call in plain English; it never makes it. The result is a consistent, explainable second opinion for officials, coaches, broadcasters, and fans, delivered in under a second from a one-sentence description of the play.</blockquote>
+  <blockquote class="claim">FlagAI unites a <strong>deterministic, citation-producing football penalty rule engine</strong> with <strong>roster and game-clock management</strong> in a single referee-facing application, so every ruling is repeatable, traceable to a specific rule, section, and article, and immediately reflected in the game state. Unlike general-purpose AI chatbots or static digital rulebooks, FlagAI returns the same verifiable answer for the same play every time.</blockquote>
   <div class="three-col">
-    <div class="pill-card"><h4>What exists today</h4><p>Video-review tools that need cameras and human judgment, and chatbots that can quote rules but hallucinate rulings.</p></div>
-    <div class="pill-card"><h4>What FlagAI changes</h4><p>The ruling is computed from codified rules; the same play always gets the same answer, with a citation you can check.</p></div>
-    <div class="pill-card"><h4>Why it matters</h4><p>Officiating disputes are trust problems. Auditable logic — not opaque predictions — is how you earn trust in a call.</p></div>
+    <div class="pill-card"><h4>Game-aware, not lookup</h4><p>A chatbot can answer a rules question. FlagAI applies the rule to the live clock, down, distance, spot, and roster and hands back the enforced result: <em>1st &amp; 10 at the V-15, clock starts on the snap.</em></p></div>
+    <div class="pill-card"><h4>Deterministic and testable</h4><p>The call is made by Python rule code with tests behind every rule. Same facts, same ruling. The language model only parses the play and explains the call; it never makes it.</p></div>
+    <div class="pill-card"><h4>One tool for the whole game</h4><p>Timing, rosters, and rulings share one game-state object, so one browser tab replaces the stopwatch, the roster card, and the rulebook search.</p></div>
+  </div>
+</section>
+
+<section class="section alt" id="evolution">
+  <div class="wrap">
+    <h2>How the project evolved</h2>
+    <p class="lead">FlagAI started as a rules-lookup assistant. SME review pushed it toward a full referee tool, and every condition from that review is now built into the design.</p>
+    <div class="two-col">
+      <ol class="timeline">
+        <li><b>Spring–Summer 2026 · Origins</b> FlagAI concept, Mini-TED talk and essays on AI in NFL officiating; CSC318 Software Requirements Specification and the working GridironIQ rule engine (50 tests passing).</li>
+        <li><b>SIP311 Week 1–2 · Problem &amp; pitch</b> Problem statement, three candidate solutions, prior-art research. Peers recommended the text-play → ruling solution.</li>
+        <li><b>SIP311 Round 1 · Passed with conditions</b> SME asked for a referee app (not just rules), IP caution on the rulebook, Python + Flask for the MVP, and a ≤5-minute re-pitch.</li>
+        <li><b>Sept 29, 2026 · Rule set approved</b> Instructor approved using the NFL rules for the SIP and coursework.</li>
+        <li><b>SIP311 Week 4 · SIP Innovation Brief</b> Technical field, background, nine prior-art sources, project description, innovation claim, usage scenario. <a href="sip-brief.html">Read it →</a></li>
+        <li><b>Oct 2026 · Round 2 re-pitch</b> Game-day referee app: rules + rosters + timing, Python/Flask, new architecture and prototype screen. <a href="docs/Hudson_SIP311_Pitch_Round2.pdf" target="_blank">Deck (PDF) →</a></li>
+      </ol>
+      <div>
+        <h3>SME conditions → how FlagAI answers them</h3>
+        <table class="status">
+          <tr><th>Round 1 condition</th><th>Round 2 response</th></tr>
+          <tr><td>Rules alone can already be looked up with AI tools — make it a <b>referee app</b></td><td>Added a <b>game-timing module</b> (game clock, 40/25-sec play clock, timeouts, two-minute warning) and a <b>roster module</b> (numbering, eligibility, disqualification counts, foul log). The rule engine now runs inside the live game state.</td></tr>
+          <tr><td>Rulebook <b>IP risk</b></td><td>Rules are encoded as original Python logic keyed by rule-section-article, with summaries in my own words. No rulebook text or league marks are stored or shown. Rule set approved by the instructor on 9/29/2026; the engine is ruleset-agnostic, so a high school ruleset can be added later.</td></tr>
+          <tr><td>Build the MVP in <b>Python with Flask</b></td><td>Python 3.12 end to end; Flask + Jinja2 serve the game-day screen. One process, no separate JavaScript front end.</td></tr>
+          <tr><td>Re-pitch <b>≤ 5 minutes</b>: features, innovation, languages</td><td>Seven-slide Round 2 pitch scripted to about 4:20.</td></tr>
+        </table>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="wrap section" id="description">
   <h2>Project description</h2>
-  <div class="two-col">
-    <div>
-      <h3>The problem</h3>
-      <p>Penalty enforcement in football is a large, interdependent rule system: what the foul is, where it happened, the down and distance, and whether fouls offset all change the outcome. Officials get it right most of the time, but when they don't, no one — not fans, not broadcasters, not even coaches — can quickly verify <em>why</em> a call was made or what the correct enforcement should be.</p>
-      <h3>The solution (SIP311 scope)</h3>
-      <p>FlagAI's minimum viable product is a <strong>text-to-ruling engine</strong>. The user types a description of the play. A parser extracts the actors and actions. A rule engine, built from the NFL rulebook encoded as structured rules, determines the foul, the penalty yardage, the enforcement spot, and whether the down is replayed — and returns the specific rule, section, and article. A large language model then produces a plain-English explanation of that ruling for a general audience.</p>
-    </div>
+  <p class="lead">FlagAI is a web-based game-day assistant for football officials, built in Python with Flask. It is what an official opens on a phone or tablet at the game: it keeps the clock, knows who is on the field, rules on the play, computes the enforcement, and keeps the record.</p>
+  <div class="cards feature-cards">
+    <div class="card"><p class="eyebrow">Module 1</p><h3>Make the Call</h3><p>Plain-English play description in. The rule engine identifies the foul and computes enforcement against the live situation — spot, yardage, new down and distance, clock — with the rule number, a plain-language summary, and what facts would change the call.</p></div>
+    <div class="card"><p class="eyebrow">Module 2</p><h3>Game timing</h3><p>Game clock with stop/start reasons, 40- and 25-second play clock, three timeouts per half, two-minute warning, and period changes. Every ruling reports what the clock does next.</p></div>
+    <div class="card"><p class="eyebrow">Module 3</p><h3>Rosters</h3><p>Both teams' numbers and positions. Checks eligibility by numeral, counts players on the field, and warns when a second unsportsmanlike foul would disqualify a player.</p></div>
+    <div class="card"><p class="eyebrow">Module 4</p><h3>Foul log &amp; report</h3><p>Every accepted ruling is logged by time, team, and player number, with accept/override by the official and a post-game report for the crew.</p></div>
+  </div>
+  <div class="two-col" style="margin-top:28px">
     <div>
       <h3>Who it's for</h3>
       <ul>
-        <li><b>Officials in training</b> — practice enforcement scenarios with instant, cited feedback.</li>
-        <li><b>Coaches &amp; analysts</b> — check enforcement outcomes when preparing challenges.</li>
-        <li><b>Broadcasters &amp; fans</b> — understand a call in seconds, with the rule in hand.</li>
+        <li><b>On-field officials and crews</b> — fast, citable support during the game, with the official keeping final authority.</li>
+        <li><b>Officiating trainees and clinic instructors</b> — trainees rule on written plays and are graded against the same deterministic standard.</li>
+        <li><b>League and association rules coordinators</b> — test how a rule change alters enforcement outcomes.</li>
       </ul>
-      <h3>Deliberately out of scope for SIP311</h3>
-      <p>Video and computer-vision detection of fouls. Peers in my SIP311 pitch review recommended narrowing to the rule-engine core first; CV becomes the future-work layer once rulings are trustworthy.</p>
-      <h3>Team</h3>
-      <p>Solo project. Design, rule encoding, engineering, and testing by Joseph Hudson Jr.</p>
+    </div>
+    <div>
+      <h3>Scope boundaries</h3>
+      <p>The SIP311 build target is the rule engine with ten fouls, the timing module, and the Flask game-day screen. Video and computer-vision foul detection stay out of scope; the product is software-only and runs on a standard laptop or tablet. Design, rule encoding, engineering, and testing are mine — this is a solo project.</p>
     </div>
   </div>
 </section>
 
-<section class="wrap section" id="architecture">
-  <h2>Architecture</h2>
-  <svg viewBox="0 0 900 300" class="diagram" role="img" aria-label="FlagAI architecture: play description enters a parser, then a deterministic rule engine that produces the ruling and citation; an LLM explains but does not decide.">
-<defs><marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#0B1F3A"/></marker></defs>
-<g font-family="Inter,Segoe UI,Arial" font-size="14">
-<rect x="20" y="100" width="150" height="90" rx="10" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="95" y="135" text-anchor="middle" font-weight="700" fill="#0B1F3A">Play description</text><text x="95" y="156" text-anchor="middle" fill="#334155">plain text input</text><text x="95" y="174" text-anchor="middle" fill="#334155" font-size="12">"3rd &amp; 7, DB grabs WR jersey…"</text>
-<rect x="210" y="100" width="150" height="90" rx="10" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="285" y="135" text-anchor="middle" font-weight="700" fill="#0B1F3A">Play parser</text><text x="285" y="156" text-anchor="middle" fill="#334155">extracts actors,</text><text x="285" y="174" text-anchor="middle" fill="#334155">actions, situation</text>
-<rect x="400" y="70" width="190" height="150" rx="10" fill="#0B1F3A" stroke="#F5B400" stroke-width="3"/><text x="495" y="105" text-anchor="middle" font-weight="700" fill="#F5B400" font-size="16">Deterministic</text><text x="495" y="125" text-anchor="middle" font-weight="700" fill="#F5B400" font-size="16">Rule Engine</text><text x="495" y="152" text-anchor="middle" fill="#fff">codified NFL rulebook</text><text x="495" y="172" text-anchor="middle" fill="#fff">foul → yardage → down</text><text x="495" y="192" text-anchor="middle" fill="#fff">enforcement spot</text><text x="495" y="210" text-anchor="middle" fill="#C7D2E3" font-size="12">the ruling is decided HERE</text>
-<rect x="630" y="100" width="150" height="90" rx="10" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="705" y="135" text-anchor="middle" font-weight="700" fill="#0B1F3A">Ruling + citation</text><text x="705" y="156" text-anchor="middle" fill="#334155">e.g. Defensive Holding</text><text x="705" y="174" text-anchor="middle" fill="#334155">Rule 12, Sec. 1, Art. 6</text>
-<rect x="400" y="240" width="190" height="50" rx="10" fill="#FFF7DF" stroke="#F5B400" stroke-width="2" stroke-dasharray="6 4"/><text x="495" y="260" text-anchor="middle" font-weight="700" fill="#0B1F3A">LLM (advisory only)</text><text x="495" y="278" text-anchor="middle" fill="#334155" font-size="12">plain-English explanation · never decides</text>
-<line x1="170" y1="145" x2="208" y2="145" stroke="#0B1F3A" stroke-width="2" marker-end="url(#ar)"/>
-<line x1="360" y1="145" x2="398" y2="145" stroke="#0B1F3A" stroke-width="2" marker-end="url(#ar)"/>
-<line x1="590" y1="145" x2="628" y2="145" stroke="#0B1F3A" stroke-width="2" marker-end="url(#ar)"/>
-<line x1="495" y1="220" x2="495" y2="238" stroke="#0B1F3A" stroke-width="2" stroke-dasharray="4 3"/>
-<line x1="590" y1="265" x2="705" y2="265" stroke="#0B1F3A" stroke-width="2" stroke-dasharray="4 3"/><line x1="705" y1="265" x2="705" y2="192" stroke="#0B1F3A" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#ar)"/>
-</g></svg>
-  <p class="caption">Figure 1 — FlagAI pipeline. The ruling is produced by deterministic logic; the language model is confined to an advisory, explanatory role.</p>
-  <div class="two-col">
-    <div>
-      <h3>Tech stack</h3>
-      <ul>
-        <li><b>Python 3 / FastAPI</b> — REST API exposing <code>POST /ruling</code></li>
-        <li><b>Rule engine</b> — rulebook encoded as structured rule objects with unit tests per rule</li>
-        <li><b>LLM layer</b> — Claude API for explanation only, with the engine's output as grounding</li>
-        <li><b>n8n</b> — automation and orchestration for batch scenario runs</li>
-        <li><b>Git / GitHub</b> — version control, CI test runs</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Design principles</h3>
-      <ul>
-        <li><b>Determinism first.</b> Same input, same ruling, every time.</li>
-        <li><b>Citation or nothing.</b> Every ruling carries rule, section, and article.</li>
-        <li><b>LLM is a narrator, not a referee.</b> It cannot alter the engine's output.</li>
-        <li><b>Testable by rule.</b> Each encoded rule has scenario tests derived from the rulebook's own examples.</li>
-      </ul>
+<section class="section alt" id="architecture">
+  <div class="wrap">
+    <h2>Architecture</h2>
+    <a href="img/r2-architecture.png" target="_blank"><img class="media" src="img/r2-architecture.png" alt="FlagAI MVP architecture: game-day screen, play parser, deterministic rule engine, advisory layer, and ruling plus game state, backed by a prompt store, rule knowledge base, and test corpus"></a>
+    <p class="caption">Figure 1 — Round 2 MVP architecture (Python + Flask). Timing and roster modules feed one game-state object. The language model parses the play and explains the result; the ruling and enforcement come from the deterministic rule engine (dark box), the only place a call is decided.</p>
+    <div class="two-col">
+      <div>
+        <h3>Languages &amp; frameworks</h3>
+        <ul>
+          <li><b>Python 3.12</b> — rule engine, timing and roster modules as pure functions over a typed game-state object</li>
+          <li><b>Flask + Jinja2</b> — routes, forms, and server-rendered game-day screen; a little JavaScript for the running clocks</li>
+          <li><b>SQL</b> — SQLite for the MVP (PostgreSQL for deployment) through SQLAlchemy models for games, rosters, rulings, and the foul log</li>
+          <li><b>Claude API</b> — parses the play into JSON-schema-validated facts and writes the plain-language explanation</li>
+          <li><b>pytest + GitHub Actions</b> — labeled play corpus and timing scenarios run on every commit; Docker image for deployment</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Design principles</h3>
+        <ul>
+          <li><b>Determinism first.</b> Same facts, same ruling, every time.</li>
+          <li><b>Citation or nothing.</b> Every ruling carries rule, section, and article.</li>
+          <li><b>The LLM is a narrator, not a referee.</b> If it is unavailable, the engine still returns a complete, citable ruling.</li>
+          <li><b>Official keeps authority.</b> Every ruling is accept-or-override.</li>
+          <li><b>IP-safe by design.</b> Own logic and own summaries; no rulebook text, no league marks.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="wrap section" id="prototype">
-  <h2>Prototype / proof of concept</h2>
+  <h2>Prototype &amp; working code</h2>
+  <h3>Early-stage prototype: the game-day screen</h3>
+  <a href="img/r2-gameday-screen.png" target="_blank"><img class="media" src="img/r2-gameday-screen.png" alt="FlagAI game-day screen prototype: game clock 7:42 Q2, play clock, 3rd and 7 at V-42, roster check, foul log, and a Defensive Pass Interference ruling with enforcement, rule reference and accept/override buttons"></a>
+  <p class="caption">Figure 2 — Flask prototype mockup (Round 2). Left: game situation and timing, play description, roster check (#91 one foul from disqualification), and foul log. Right: Defensive Pass Interference on #21, spot foul, 1st &amp; 10 at the V-15, clock starts on the snap, with the rule reference, what would change the call, and accept/override.</p>
+
+  <h3 style="margin-top:34px">Working code today: the GridironIQ rule engine</h3>
+  <p>The rule engine at the core of FlagAI already runs. I built it as my CSC318 final project (GridironIQ) with a layered architecture: parser → deterministic rule engine → advisory layer → audit log. It covers eight rules across pre-snap, passing, contact, and blocking fouls, and it ships with <b>50 automated tests at 95% coverage</b>. For SIP311 I'm porting this engine into the Flask app and building the timing and roster modules around it.</p>
   <div class="two-col">
-    <div>
-      <h3>Status</h3>
-      <table class="status">
-        <tr><th>Milestone</th><th>Status</th></tr>
-        <tr><td>Problem definition, pitch deck &amp; peer pitch review</td><td><span class="tag done">Done</span></td></tr>
-        <tr><td>Software Requirements Specification (CSC318)</td><td><span class="tag done">Done</span></td></tr>
-        <tr><td>Rule schema &amp; first rule family encoded (holding, pass interference)</td><td><span class="tag wip">In progress</span></td></tr>
-        <tr><td>Parser: play text → structured play</td><td><span class="tag wip">In progress</span></td></tr>
-        <tr><td>API endpoint + LLM explanation</td><td><span class="tag todo">Planned</span></td></tr>
-        <tr><td>Scenario test suite (50+ plays)</td><td><span class="tag todo">Planned</span></td></tr>
-        <tr><td>Demo UI for Boards</td><td><span class="tag todo">SIP411</span></td></tr>
-      </table>
-    </div>
-    <div>
-      <h3>Example interaction</h3>
-      <pre class="demo"><b>Input</b>
-2nd &amp; 8 at the OFF 35. Defensive back grabs the
-receiver's jersey 7 yards downfield before the
-pass arrives. Pass falls incomplete.
+    <figure class="fig"><a href="img/gridironiq-ruling.png" target="_blank"><img class="media" src="img/gridironiq-ruling.png" alt="GridironIQ app screenshot returning Defensive Pass Interference, Rule 8 Section 5 Article 2, for a play description"></a><figcaption>Figure 3 — Real output from the running engine: a play description returns Defensive Pass Interference with its rule citation and rationale.</figcaption></figure>
+    <figure class="fig"><a href="img/gridironiq-tests.png" target="_blank"><img class="media" src="img/gridironiq-tests.png" alt="pytest output: 50 passed, 95 percent coverage"></a><figcaption>Figure 4 — Test suite: 27 unit, 17 integration, and 6 system tests, all passing.</figcaption></figure>
+  </div>
 
-<b>Ruling</b>
-Foul: Defensive Pass Interference
-Enforcement: Spot foul → ball at OFF 42
-Down: Automatic 1st down
-Citation: Rule 8, Section 5, Article 1–2
+  <h3 style="margin-top:28px">Build status</h3>
+  <table class="status">
+    <tr><th>Milestone</th><th>Status</th></tr>
+    <tr><td>Problem statement, solutions, and prior-art research</td><td><span class="tag done">Done</span></td></tr>
+    <tr><td>Round 1 pitch → passed with conditions; Round 2 re-pitch addressing every condition</td><td><span class="tag done">Done</span></td></tr>
+    <tr><td>Rule set decision approved by instructor (NFL rules, own encoded logic)</td><td><span class="tag done">Done</span></td></tr>
+    <tr><td>SIP Innovation Brief, Part 1</td><td><span class="tag done">Done</span></td></tr>
+    <tr><td>Software Requirements Specification (CSC318)</td><td><span class="tag done">Done</span></td></tr>
+    <tr><td>Rule engine core: 8 rules, parser, citation output, 50 tests (GridironIQ)</td><td><span class="tag done">Done</span></td></tr>
+    <tr><td>Port engine to Flask; expand to 10 fouls with enforcement against game state</td><td><span class="tag wip">In progress</span></td></tr>
+    <tr><td>Game-timing module (game clock, play clock, timeouts, two-minute warning)</td><td><span class="tag wip">In progress</span></td></tr>
+    <tr><td>Roster module, eligibility checks, foul log</td><td><span class="tag todo">Planned</span></td></tr>
+    <tr><td>SIP Brief Part 2: evaluation criteria, goals and tasks, prototype description</td><td><span class="tag todo">Planned</span></td></tr>
+    <tr><td>Labeled play corpus in CI; user testing with officials</td><td><span class="tag todo">SIP408</span></td></tr>
+  </table>
+</section>
 
-<b>Explanation (LLM, advisory)</b>
-Because the contact restricted the receiver's
-ability to catch a catchable pass before it
-arrived, it is pass interference, not holding…</pre>
-      <p class="caption">Sample output format; see the interface mockup below for the target UI.</p>
+<section class="section alt" id="code">
+  <div class="wrap">
+    <h2>Code &amp; documents</h2>
+    <div class="cards">
+      <a class="card" href="https://github.com/TheBlackPanther616/Hudson_SIP_Website_/tree/main/code/gridironiq" target="_blank" rel="noopener"><h3>Source code — rule engine</h3><p>GridironIQ engine: play parser, rule library, deterministic engine, advisory seam, SQLite audit log, and 50 tests. <span class="muted">Python · GitHub</span></p></a>
+      <a class="card" href="https://github.com/TheBlackPanther616/Hudson_SIP_Website_/blob/main/code/gridironiq/app/services/rule_library.py" target="_blank" rel="noopener"><h3>Rule library</h3><p>How a rule becomes code: each foul is a predicate over parsed facts, with yardage, enforcement, and a rule-section-article citation.</p></a>
+      <a class="card" href="docs/Hudson_SIP311_Pitch_Round2.pdf" target="_blank"><h3>Round 2 pitch deck</h3><p>Seven slides: what changed, features, innovation claim, Python + Flask approach, MVP architecture, game-day prototype. <span class="muted">PDF</span></p></a>
+      <a class="card" href="sip-brief.html"><h3>SIP Innovation Brief</h3><p>Part 1: technical field, background, nine prior-art sources, project description, innovation claim, usage scenario.</p></a>
+      <a class="card" href="docs/Hudson_Module13_FinalProject_SRS.pdf" target="_blank"><h3>Software Requirements Specification</h3><p>CSC318, 16 pages: 11 functional and 6 non-functional requirements, use case model, UML domain and agent diagrams, traceability matrix. <span class="muted">PDF</span></p></a>
+      <a class="card" href="docs/Hudson_SIP311_Pitch.pdf" target="_blank"><h3>Round 1 pitch deck</h3><p>The original "FlagAI powered by The Call AI" pitch, kept as a record of where the project started. <span class="muted">PDF</span></p></a>
     </div>
   </div>
 </section>
@@ -144,47 +173,63 @@ arrived, it is pass interference, not holding…</pre>
 <section class="wrap section" id="visuals">
   <h2>Visuals, blueprints &amp; concept art</h2>
   <div class="gallery">
-    <figure><video class="media" src="img/flagai-logo-reveal.mp4" autoplay muted loop playsinline poster="img/flagai-logo.png"></video><figcaption>FlagAI logo reveal (animated concept, 20 s).</figcaption></figure>
-    <figure><img class="media" src="img/flagai-logo.png" alt="FlagAI shield logo: white starburst and football on a navy and red shield"><figcaption>FlagAI division mark — shield, starburst, and football.</figcaption></figure>
-    <figure><a href="img/mvp-architecture.png" target="_blank"><img class="media" src="img/mvp-architecture.png" alt="FlagAI MVP architecture flow"></a><figcaption>MVP architecture flow from the SIP311 pitch deck (slide 10).</figcaption></figure>
-    <figure><a href="img/mockup-ruling.png" target="_blank"><img class="media" src="img/mockup-ruling.png" alt="Early-stage prototype ruling interface mockup"></a><figcaption>Early-stage prototype: ruling interface mockup (slide 11).</figcaption></figure>
-    <figure><a href="img/uml-usecase.png" target="_blank"><img class="media" src="img/uml-usecase.png" alt="GridironIQ use case diagram"></a><figcaption>Use case diagram — SRS Figure 1 (§5.2).</figcaption></figure>
-    <figure><a href="img/uml-domain.png" target="_blank"><img class="media" src="img/uml-domain.png" alt="GridironIQ UML domain model"></a><figcaption>UML domain model — SRS Figure 2 (§6.1).</figcaption></figure>
-    <figure><a href="img/uml-agents.png" target="_blank"><img class="media" src="img/uml-agents.png" alt="GridironIQ agent subsystem class diagram"></a><figcaption>Agent subsystem class diagram — SRS Figure 3 (§6.2).</figcaption></figure>
-    <figure><div class="placeholder tall"><span>Logo — The Call AI masterbrand<br><small>img/thecallai-logo.png</small></span></div><figcaption>The Call AI parent brand mark (in progress).</figcaption></figure>
+    <figure><a href="img/brief-wireframe.png" target="_blank"><img class="media" src="img/brief-wireframe.png" alt="Concept wireframe of the FlagAI referee game-day console"></a><figcaption>Concept wireframe of the game-day console (SIP Brief, Figure 1).</figcaption></figure>
+    <figure><a href="img/r2-gameday-screen.png" target="_blank"><img class="media" src="img/r2-gameday-screen.png" alt="Round 2 game-day screen prototype"></a><figcaption>Round 2 game-day screen prototype.</figcaption></figure>
+    <figure><a href="img/r2-architecture.png" target="_blank"><img class="media" src="img/r2-architecture.png" alt="Round 2 MVP architecture"></a><figcaption>Round 2 MVP architecture (Python + Flask).</figcaption></figure>
+    <figure><video class="media" src="img/flagai-logo-reveal.mp4" autoplay muted loop playsinline poster="img/flagai-logo.png"></video><figcaption>FlagAI logo reveal (animated concept).</figcaption></figure>
+    <figure><img class="media" src="img/flagai-logo.png" alt="FlagAI shield logo"><figcaption>FlagAI division mark.</figcaption></figure>
+    <figure><a href="img/uml-usecase.png" target="_blank"><img class="media" src="img/uml-usecase.png" alt="Use case diagram"></a><figcaption>Use case diagram (SRS Figure 1).</figcaption></figure>
+    <figure><a href="img/uml-domain.png" target="_blank"><img class="media" src="img/uml-domain.png" alt="UML domain model"></a><figcaption>UML domain model (SRS Figure 2).</figcaption></figure>
+    <figure><a href="img/uml-agents.png" target="_blank"><img class="media" src="img/uml-agents.png" alt="Agent subsystem class diagram"></a><figcaption>Agent subsystem class diagram (SRS Figure 3).</figcaption></figure>
+    <figure><a href="img/mvp-architecture.png" target="_blank"><img class="media" src="img/mvp-architecture.png" alt="Round 1 MVP architecture"></a><figcaption>Round 1 architecture (rules lookup only) — superseded.</figcaption></figure>
+    <figure><a href="img/mockup-ruling.png" target="_blank"><img class="media" src="img/mockup-ruling.png" alt="Round 1 ruling interface mockup"></a><figcaption>Round 1 ruling mockup — superseded by the game-day screen.</figcaption></figure>
   </div>
-  <h3>The Call AI ecosystem (vision)</h3>
+  <h3>The Call AI ecosystem (long-term vision)</h3>
   <p>FlagAI is the football division of a multi-sport officiating platform, each division named for its sport's core officiating mechanism:</p>
   <div class="chips"><span>Flag.AI · football</span><span>Card.AI / Pitch.AI · soccer</span><span>Whistle.AI / Foul.AI · basketball</span><span>Zone.AI / Strike.AI · baseball</span><span>Box.AI / Crease.AI · hockey</span><span>Line.AI / Fault.AI · tennis</span><span>Sector.AI / Steward.AI · motorsport</span><span>Judge.AI · combat sports</span></div>
 </section>
 
-<section class="wrap section" id="code">
-  <h2>Code &amp; documents</h2>
-  <div class="cards">
-    <a class="card" href="https://github.com/TheBlackPanther616/flagai" target="_blank" rel="noopener"><h3>GitHub — flagai</h3><p>Rule engine, parser, API, and tests. (Public repo link — update when pushed.)</p></a>
-    <a class="card" href="docs/Hudson_Module13_FinalProject_SRS.pdf" target="_blank"><h3>Software Requirements Specification</h3><p>GridironIQ SRS v1.0 (CSC318, 16 pp.): 6 objectives, 11 functional + 6 non-functional requirements, use case model, UML domain and agent diagrams, glossary, traceability matrix.</p></a>
-    <a class="card" href="docs/Hudson_SIP311_Pitch.pdf" target="_blank"><h3>SIP311 pitch deck</h3><p>"FlagAI powered by The Call AI" — 11 slides: problem, innovation claim, scope, target market, prior art, MVP architecture, prototype. <span class="muted">(PDF; the PPTX is in docs/)</span></p></a>
-    <a class="card" href="https://www.youtube.com/@josephhudson1125" target="_blank" rel="noopener"><h3>Video — n8n automations</h3><p>Walkthrough of the automation behind FlagAI (in production).</p></a>
+<section class="section alt" id="prior-art">
+  <div class="wrap">
+    <h2>Prior art — and where FlagAI differs</h2>
+    <table class="status">
+      <tr><th>Existing work</th><th>What it does</th><th>FlagAI's difference</th></tr>
+      <tr><td>2026 NFL Rulebook</td><td>Authoritative static reference by rule, section, article</td><td>Encodes rule logic as code that returns the foul, enforcement, and citation</td></tr>
+      <tr><td>NFHS Digital</td><td>Searchable high school rules and case books</td><td>Produces a ruling and ties it to clock and rosters instead of a search result</td></tr>
+      <tr><td>REFSIX</td><td>Soccer referee timers, cards, rosters, match reports</td><td>Brings timing and rosters to football and links them to a rule engine</td></tr>
+      <tr><td>Arbiter</td><td>Assigning, availability, and payment for officials</td><td>Works during the game, not before and after it</td></tr>
+      <tr><td>Hawk-Eye line-to-gain</td><td>Camera system for one measurement in NFL stadiums</td><td>Software-only, covers many fouls, runs on any laptop or tablet</td></tr>
+      <tr><td>FIFA semi-automated offside</td><td>Vision-based, single rule, elite venues</td><td>Text-based, multi-rule, available at any level</td></tr>
+      <tr><td>ChatGPT and general LLMs</td><td>Answer rules questions in prose; may vary or misquote</td><td>Deterministic, verifiable ruling every time; no clock or roster in chatbots</td></tr>
+      <tr><td>Martín Moncunill et al. (2026), <i>MTI</i></td><td>Finds research focused on accuracy systems; practical gaps remain</td><td>Accessible decision support for officials rather than camera accuracy tools</td></tr>
+      <tr><td>Dowsett (2024), <i>Scientific American</i></td><td>Experts see AI as an aid to officials, not a replacement</td><td>Official keeps authority; FlagAI supplies a fast, citable recommendation</td></tr>
+    </table>
+    <p class="caption">Full citations and differentiation in the <a href="sip-brief.html">SIP Innovation Brief</a>.</p>
   </div>
 </section>
 
 <section class="wrap section" id="brief">
-  <h2>SIP Brief</h2>
-  <div class="brief-box">
-    <p><strong>Placeholder — SIP Brief (Week 4 assignment).</strong> The completed brief will be embedded here and available as a subpage.</p>
-    <a class="btn" href="sip-brief.html">Open SIP Brief subpage →</a>
+  <h2>SIP Innovation Brief</h2>
+  <div class="two-col">
+    <a href="sip-brief.html"><img class="media" src="img/brief-wireframe.png" alt="SIP Brief Figure 1 wireframe"></a>
+    <div>
+      <p>Part 1 of the brief is complete: technical field, background and inspiration, nine prior-art sources with APA citations, project description, innovation claim, and a training-clinic usage scenario. Parts 2 and 3 (evaluation criteria, goals and tasks, prototype description, evaluation plan) follow in SIP408 and SIP409.</p>
+      <div class="cta-row"><a class="btn" href="sip-brief.html">Read the brief →</a><a class="btn ghost" href="docs/Hudson_SIP_Innovation_Brief.pdf" target="_blank">Download PDF</a></div>
+    </div>
   </div>
 </section>
 
-<section class="wrap section" id="roadmap">
-  <h2>Roadmap to SIP411 Boards</h2>
-  <ol class="timeline">
-    <li><b>SIP311 · Weeks 1–4</b> Pitch, website, SIP Brief, innovation claim locked.</li>
-    <li><b>SIP311 · Weeks 5–10</b> Rule schema, first rule families, parser, scenario tests.</li>
-    <li><b>SIP311 · Weeks 11–15</b> API + LLM explanation layer, demo video, executability review for SIP408.</li>
-    <li><b>SIP408</b> Build-out: broader rule coverage, UI, user testing with officials/coaches.</li>
-    <li><b>SIP411 · Boards</b> Live demo, objectives evidence, and defense.</li>
-  </ol>
+<section class="section alt" id="roadmap">
+  <div class="wrap">
+    <h2>Roadmap to SIP411 Boards</h2>
+    <ol class="timeline">
+      <li><b>SIP311 · now</b> Round 2 re-pitch, website, Innovation Brief Part 1 — done. Port engine to Flask; timing module.</li>
+      <li><b>SIP311 · end of term</b> Rule engine with ten fouls, timing module, and the Flask game-day screen running end to end.</li>
+      <li><b>SIP408</b> Roster module and foul log, labeled play corpus in CI, Brief Part 2, user testing with officials and trainees.</li>
+      <li><b>SIP409</b> Evaluation plan and completion assessment; deployment.</li>
+      <li><b>SIP411 · Boards</b> Live demo, objectives evidence, and defense.</li>
+    </ol>
+  </div>
 </section>
 
 </main>

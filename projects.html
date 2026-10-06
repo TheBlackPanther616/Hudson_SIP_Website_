@@ -21,50 +21,160 @@
 <section class="hero compact"><div class="wrap">
   <p class="eyebrow">In-major &amp; personal work</p>
   <h1>Projects</h1>
-  <p class="lead">Work that reflects my Artificial Intelligence and Advancing Computer Science degrees. Each entry notes the program objectives it supports.</p>
+  <p class="lead">Work that reflects my Artificial Intelligence and Advancing Computer Science degrees. Each entry lists its stack and the <a href="boards.html">program objectives</a> it supports.</p>
+  <nav class="subnav">
+    <a href="#gridironiq">GridironIQ engine</a><a href="#srs">SRS</a><a href="#heroverse">HeroVerse AI</a><a href="#capeclash">Cape Clash</a><a href="#avatars">AI Avatars</a><a href="#generative">Generative media</a><a href="#csc262">C# OOP</a><a href="#csc382">C++ data structures</a><a href="#mediacast">Mediacast pipeline</a>
+  </nav>
 </div></section>
 
-<section class="wrap section" id="srs">
+<section class="wrap section" id="gridironiq">
+  <div class="project">
+    <a href="img/gridironiq-ruling.png" target="_blank"><img class="media" src="img/gridironiq-ruling.png" alt="GridironIQ returning a Defensive Pass Interference ruling with rule citation"></a>
+    <div>
+      <p class="eyebrow">CSC318 · Software Engineering · Final Project implementation</p>
+      <h2>GridironIQ — Rule-Grounded Penalty Engine</h2>
+      <p>The working core of my SIP. A play description is parsed into machine-checkable facts, evaluated against a rule library, and returned as a determination with the rule citation that produced it. Four layers (presentation, API, service, data) with one-way dependencies; the language model sits behind an advisory interface, so the system still returns a complete, citable answer if the model is offline. Eight rules across pre-snap, passing, contact, and blocking fouls, with an audit log of every call.</p>
+      <ul class="meta"><li><b>Stack</b> Python, FastAPI, SQLAlchemy, SQLite, Claude API, pytest, GitHub Actions</li><li><b>Tests</b> 50 passing · 95% coverage</li><li><b>Objectives</b> AI 1, AI 2, AI 6, ACS 1, ACS 3, ACS 5</li></ul>
+      <div class="cta-row"><a class="btn small" href="https://github.com/TheBlackPanther616/Hudson_SIP_Website_/tree/main/code/gridironiq" target="_blank" rel="noopener">View code</a><a class="btn small ghost" href="sip.html#prototype">See it on the SIP page</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section alt" id="srs">
   <div class="project">
     <a href="docs/Hudson_Module13_FinalProject_SRS.pdf" target="_blank"><img class="media" src="img/uml-usecase.png" alt="GridironIQ use case diagram from the SRS"></a>
     <div>
-      <p class="eyebrow">CSC318 · Software Engineering · Final Project</p>
+      <p class="eyebrow">CSC318 · Software Engineering · Module 13</p>
       <h2>GridironIQ — Software Requirements Specification</h2>
-      <p>A full SRS for the FlagAI/GridironIQ rule engine, written solo: project overview, scope and objectives, eleven numbered functional requirements, six non-functional requirements (performance, reliability, usability, security, explainability, portability), a use case model with an expanded use case, a UML domain model and agent-subsystem class diagram, glossary, assumptions, and a requirements-traceability matrix. The document fixed the SIP311 scope — <em>text play in, cited ruling out, LLM advisory only</em> — and is the design baseline for the prototype.</p>
-      <ul class="meta"><li><b>Stack</b> Python, FastAPI, Claude API, n8n</li><li><b>Objectives</b> ACS 1, ACS 2, AI 1, AI 6</li></ul>
-      <div class="cta-row"><a class="btn small" href="docs/Hudson_Module13_FinalProject_SRS.pdf" target="_blank">Read the SRS (PDF)</a><a class="btn small ghost" href="sip.html">SIP page</a></div>
+      <p>A full SRS, written solo: overview, scope and objectives, eleven functional and six non-functional requirements (performance, reliability, usability, security, explainability, portability), a use case model, a UML domain model and agent-subsystem class diagram, glossary, assumptions, and a requirements-traceability matrix. It fixed the core scope — <em>text play in, cited ruling out, LLM advisory only</em> — that FlagAI still builds on.</p>
+      <ul class="meta"><li><b>Artifacts</b> SRS, UML (use case, class, sequence, deployment)</li><li><b>Objectives</b> ACS 1, AI 1</li></ul>
+      <div class="cta-row"><a class="btn small" href="docs/Hudson_Module13_FinalProject_SRS.pdf" target="_blank">Read the SRS (PDF)</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section alt" id="mediacast">
+<section class="wrap section" id="heroverse">
   <div class="project">
-    <div class="placeholder wide"><span>Diagram — Splunk → Claude → ElevenLabs<br><small>img/mediacast-arch.png</small></span></div>
+    <a href="https://theblackpanther616.github.io/Assignment-7.1-Final-Project-Deliverable/" target="_blank" rel="noopener"><img class="media" src="img/proj-heroverse.jpg" alt="HeroVerse AI hero database screen"></a>
     <div>
-      <p class="eyebrow">Personal lab project</p>
-      <h2>Hudson Mediacast Pipeline</h2>
-      <p>A FastAPI sidecar that turns Splunk security data into spoken SOC briefings: Splunk search results are summarized by Claude and voiced by ElevenLabs through a <code>/briefing</code> endpoint. Phase 1 (static media Splunk app) and Phase 2 (sidecar) are established; Phase 3 adds a <code>/video_briefing</code> endpoint.</p>
-      <ul class="meta"><li><b>Stack</b> Splunk, Python, FastAPI, Claude API, ElevenLabs, MCP</li><li><b>Objectives</b> AI 1, AI 6, ACS 3</li></ul>
+      <p class="eyebrow">Assignment 7.1 · Final project</p>
+      <h2>HeroVerse AI</h2>
+      <p>A superhero database with Claude built in: browse and filter heroes by universe and tier, ask "the Oracle" natural-language lore questions, run AI matchup analyses between two heroes, and generate complete original hero profiles from a short concept. The API key stays in the visitor's browser and is never stored on a server.</p>
+      <ul class="meta"><li><b>Stack</b> HTML, CSS, JavaScript, Claude API</li><li><b>Objectives</b> AI 1, AI 2, AI 6</li></ul>
+      <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/Assignment-7.1-Final-Project-Deliverable/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/Assignment-7.1-Final-Project-Deliverable" target="_blank" rel="noopener">Code</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section" id="csc382">
+<section class="wrap section alt" id="capeclash">
   <div class="project">
-    <div class="placeholder wide"><span>Screenshot — AVL test suite output<br><small>img/csc382-tests.png</small></span></div>
+    <a href="https://theblackpanther616.github.io/cape-clash/" target="_blank" rel="noopener"><img class="media" src="img/proj-capeclash.jpg" alt="Cape Clash stat comparison bars"></a>
+    <div>
+      <p class="eyebrow">CS final project · Web app</p>
+      <h2>Cape Clash</h2>
+      <p>A showdown calculator for my own original superhero universe (21 characters, including Grinlocke). Pick two fighters and get side-by-side bar charts across nine stats, automatic handling of the one "lower is better" stat, a computed verdict, and saved matchups that persist between visits. Data-driven and fully client-side.</p>
+      <ul class="meta"><li><b>Stack</b> HTML, CSS, JavaScript, JSON data</li><li><b>Objectives</b> ACS 3, ACS 4</li></ul>
+      <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/cape-clash/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/cape-clash" target="_blank" rel="noopener">Code</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="avatars">
+  <div class="project">
+    <a href="https://theblackpanther616.github.io/AI-Avatars/" target="_blank" rel="noopener"><img class="media" src="img/proj-avatars.jpg" alt="AI Avatar Showcase landing page"></a>
+    <div>
+      <p class="eyebrow">Generative AI assignment</p>
+      <h2>AI Avatar Showcase</h2>
+      <p>Three synthetic presenters built with three generative tools: "Joseph 2.0," a face-and-voice clone of me (HeyGen); Dr. Nova, a retro-futurist science host (D-ID + ElevenLabs); and Coach Rex (HeyGen). Demonstrates voice cloning, face cloning, and full synthetic-human creation.</p>
+      <ul class="meta"><li><b>Tools</b> HeyGen, D-ID, ElevenLabs</li><li><b>Objectives</b> AI 1</li></ul>
+      <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/AI-Avatars/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/AI-Avatars" target="_blank" rel="noopener">Code</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section alt" id="generative">
+  <h2>Generative media sites</h2>
+  <div class="two-col">
+    <div>
+      <a href="https://theblackpanther616.github.io/hip-hop-museum/" target="_blank" rel="noopener"><img class="media" src="img/proj-museum.jpg" alt="Legends of the Wall street-art museum"></a>
+      <h3 style="margin-top:14px">Legends of the Wall</h3>
+      <p>A virtual street-art museum of AI-generated hip-hop murals, each with its prompt and an interpretive description.</p>
+      <ul class="meta"><li><b>Tools</b> DALL-E, HTML/CSS</li></ul>
+      <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/hip-hop-museum/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/hip-hop-museum" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div>
+      <a href="https://theblackpanther616.github.io/CrownCityRecords/" target="_blank" rel="noopener"><img class="media" src="img/proj-crowncity.jpg" alt="Crown City Records AI music label"></a>
+      <h3 style="margin-top:14px">Crown City Records</h3>
+      <p>An AI music label: ten original tracks across hip-hop, rap, R&amp;B, and pop generated with text-to-music tools, with genre filters and in-page players.</p>
+      <ul class="meta"><li><b>Tools</b> Suno, Udio, Soundraw, HTML/JS</li></ul>
+      <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/CrownCityRecords/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/CrownCityRecords" target="_blank" rel="noopener">Code</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="csc262">
+  <div class="project">
+    <svg viewBox="0 0 420 260" class="diagram" role="img" aria-label="Class diagram: WildCave and ShowCave inherit from Cave; WildCave implements ICaveReport">
+      <g font-family="Inter,Segoe UI,Arial" font-size="13">
+        <rect x="140" y="20" width="140" height="62" rx="8" fill="#0B1F3A"/><text x="210" y="45" text-anchor="middle" fill="#F5B400" font-weight="700">Cave</text><text x="210" y="66" text-anchor="middle" fill="#fff" font-size="11">encapsulated fields · virtual Display()</text>
+        <rect x="20" y="170" width="140" height="62" rx="8" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="90" y="195" text-anchor="middle" fill="#0B1F3A" font-weight="700">ShowCave</text><text x="90" y="216" text-anchor="middle" fill="#334155" font-size="11">override Display()</text>
+        <rect x="260" y="170" width="140" height="62" rx="8" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="330" y="195" text-anchor="middle" fill="#0B1F3A" font-weight="700">WildCave</text><text x="330" y="216" text-anchor="middle" fill="#334155" font-size="11">override · ICaveReport</text>
+        <rect x="300" y="96" width="110" height="40" rx="8" fill="#FFF7DF" stroke="#F5B400" stroke-width="2" stroke-dasharray="5 3"/><text x="355" y="121" text-anchor="middle" fill="#0B1F3A" font-weight="700" font-size="12">«interface» ICaveReport</text>
+        <path d="M90 170 L90 130 L190 130 L190 84" stroke="#0B1F3A" stroke-width="2" fill="none"/><path d="M330 170 L330 150 L230 150 L230 84" stroke="#0B1F3A" stroke-width="2" fill="none"/>
+        <path d="M184 92 L190 82 L196 92 Z" fill="#fff" stroke="#0B1F3A"/><path d="M224 92 L230 82 L236 92 Z" fill="#fff" stroke="#0B1F3A"/>
+        <line x1="370" y1="170" x2="370" y2="138" stroke="#0B1F3A" stroke-width="2" stroke-dasharray="4 3"/>
+      </g>
+    </svg>
+    <div>
+      <p class="eyebrow">CSC262 · Object-Oriented Programming (C#)</p>
+      <h2>Cave Explorer &amp; Array Performance</h2>
+      <p>Windows Forms applications in C# on .NET. <b>Cave Explorer V2</b> models caves with a base <code>Cave</code> class, derived <code>ShowCave</code> and <code>WildCave</code> classes that override display behavior, and an <code>ICaveReport</code> interface — inheritance, encapsulation, polymorphism, and interfaces in one program, with built-in unit checks. <b>Array Performance</b> measures and compares array operation timings through a GUI.</p>
+      <ul class="meta"><li><b>Stack</b> C#, .NET, Windows Forms, Visual Studio</li><li><b>Objectives</b> ACS 2, ACS 5</li></ul>
+      <div class="cta-row"><a class="btn small" href="https://github.com/TheBlackPanther616/CSC262-Assignment-3_1_Inheritance-Encapsulation-Polymorphism-and-Interface" target="_blank" rel="noopener">Cave Explorer code</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/CSC262-Assignment-1.1-Performance-Testing" target="_blank" rel="noopener">Performance code</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section alt" id="csc382">
+  <div class="project">
+    <svg viewBox="0 0 420 240" class="diagram" role="img" aria-label="Balanced AVL tree with balance factors">
+      <g font-family="Inter,Segoe UI,Arial" font-size="14" font-weight="700">
+        <g stroke="#0B1F3A" stroke-width="2"><line x1="210" y1="40" x2="120" y2="110"/><line x1="210" y1="40" x2="300" y2="110"/><line x1="120" y1="110" x2="70" y2="185"/><line x1="120" y1="110" x2="170" y2="185"/><line x1="300" y1="110" x2="350" y2="185"/></g>
+        <g fill="#0B1F3A" stroke="#F5B400" stroke-width="2"><circle cx="210" cy="40" r="22"/><circle cx="120" cy="110" r="22"/><circle cx="300" cy="110" r="22"/><circle cx="70" cy="185" r="22"/><circle cx="170" cy="185" r="22"/><circle cx="350" cy="185" r="22"/></g>
+        <g fill="#fff" text-anchor="middle"><text x="210" y="45">50</text><text x="120" y="115">30</text><text x="300" y="115">70</text><text x="70" y="190">20</text><text x="170" y="190">40</text><text x="350" y="190">80</text></g>
+        <g fill="#64748B" font-size="11" font-weight="400"><text x="238" y="30">bf 0</text><text x="82" y="100">bf 0</text><text x="328" y="100">bf −1</text></g>
+        <text x="210" y="232" text-anchor="middle" fill="#334155" font-size="12" font-weight="400">AVL rebalancing keeps every balance factor in {−1, 0, 1}</text>
+      </g>
+    </svg>
     <div>
       <p class="eyebrow">CSC382 · Data Structures &amp; Algorithms</p>
       <h2>C++ Data Structures Labs</h2>
-      <p>Binary search tree and self-balancing AVL tree with a 70-assertion test suite; hash table implementation; a comparative sorting project; and a doubly linked list used to model browser navigation (NavLink). Emphasis on object-oriented design, complexity analysis, and test-first verification.</p>
-      <ul class="meta"><li><b>Stack</b> C++17, CMake, unit tests</li><li><b>Objectives</b> ACS 5, ACS 6</li></ul>
-      <div class="cta-row"><a class="btn small" href="https://github.com/TheBlackPanther616" target="_blank" rel="noopener">GitHub</a></div>
+      <p>Binary search tree and self-balancing AVL tree with a 70-assertion test suite; a hash table implementation; a comparative sorting project; and a doubly linked list used to model browser navigation (NavLink). Emphasis on object-oriented design, complexity analysis, and test-first verification.</p>
+      <ul class="meta"><li><b>Stack</b> C++17, unit tests</li><li><b>Objectives</b> ACS 5, ACS 6</li></ul>
     </div>
   </div>
 </section>
 
-<section class="wrap section alt">
-  <h2>More coming</h2>
-  <p>Secure Coding (CSC442) and AI-major course projects will be added here as they are completed, each tagged with the objectives it supports.</p>
+<section class="wrap section" id="mediacast">
+  <div class="project">
+    <svg viewBox="0 0 420 200" class="diagram" role="img" aria-label="Mediacast pipeline: Splunk search results to FastAPI sidecar to Claude summary to ElevenLabs voice to audio briefing">
+      <defs><marker id="am" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#0B1F3A"/></marker></defs>
+      <g font-family="Inter,Segoe UI,Arial" font-size="12">
+        <rect x="10" y="30" width="110" height="54" rx="8" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="65" y="54" text-anchor="middle" font-weight="700" fill="#0B1F3A">Splunk</text><text x="65" y="72" text-anchor="middle" fill="#334155" font-size="11">security searches</text>
+        <rect x="155" y="30" width="110" height="54" rx="8" fill="#0B1F3A" stroke="#F5B400" stroke-width="2"/><text x="210" y="54" text-anchor="middle" font-weight="700" fill="#F5B400">FastAPI sidecar</text><text x="210" y="72" text-anchor="middle" fill="#fff" font-size="11">/briefing</text>
+        <rect x="300" y="30" width="110" height="54" rx="8" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="355" y="54" text-anchor="middle" font-weight="700" fill="#0B1F3A">Claude</text><text x="355" y="72" text-anchor="middle" fill="#334155" font-size="11">analyst summary</text>
+        <rect x="300" y="120" width="110" height="54" rx="8" fill="#EAF0F8" stroke="#0B1F3A" stroke-width="2"/><text x="355" y="144" text-anchor="middle" font-weight="700" fill="#0B1F3A">ElevenLabs</text><text x="355" y="162" text-anchor="middle" fill="#334155" font-size="11">voice</text>
+        <rect x="155" y="120" width="110" height="54" rx="8" fill="#FFF7DF" stroke="#F5B400" stroke-width="2"/><text x="210" y="144" text-anchor="middle" font-weight="700" fill="#0B1F3A">SOC briefing</text><text x="210" y="162" text-anchor="middle" fill="#334155" font-size="11">audio → video (Phase 3)</text>
+        <g stroke="#0B1F3A" stroke-width="2" marker-end="url(#am)"><line x1="120" y1="57" x2="153" y2="57"/><line x1="265" y1="57" x2="298" y2="57"/><line x1="355" y1="84" x2="355" y2="118"/><line x1="300" y1="147" x2="267" y2="147"/></g>
+      </g>
+    </svg>
+    <div>
+      <p class="eyebrow">Personal lab project</p>
+      <h2>Hudson Mediacast Pipeline</h2>
+      <p>A FastAPI sidecar that turns Splunk security data into spoken SOC briefings: search results are summarized by Claude and voiced by ElevenLabs through a <code>/briefing</code> endpoint. Phase 1 (static media Splunk app) and Phase 2 (sidecar) are in place; Phase 3 adds a <code>/video_briefing</code> endpoint.</p>
+      <ul class="meta"><li><b>Stack</b> Splunk, Python, FastAPI, Claude API, ElevenLabs, MCP</li><li><b>Objectives</b> AI 1, AI 6, ACS 3</li></ul>
+    </div>
+  </div>
 </section>
 
 </main>

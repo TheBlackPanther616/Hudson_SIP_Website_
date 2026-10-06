@@ -1,0 +1,30 @@
+graph TB
+    subgraph GridironIQ["GridironIQ System"]
+        UC1(["Submit play for analysis"])
+        UC2(["View penalty determination"])
+        UC3(["View rule citation and rationale"])
+        UC4(["Search rule library"])
+        UC5(["View rule detail"])
+        UC6(["Review call history"])
+        UC7(["Filter history by penalty type"])
+        UC8(["Retrieve a single archived call"])
+    end
+
+    Official["Official<br/>(primary actor)"]
+    Analyst["Analyst / Trainee<br/>(primary actor)"]
+    LLM["LLM Advisory Service<br/>(supporting actor)"]
+
+    Official --> UC1
+    Official --> UC2
+    Official --> UC3
+    Official --> UC6
+    Analyst --> UC4
+    Analyst --> UC5
+    Analyst --> UC6
+    Analyst --> UC7
+    Analyst --> UC8
+
+    UC1 -.->|includes| UC2
+    UC2 -.->|includes| UC3
+    UC6 -.->|extends| UC7
+    UC2 -.->|extends| LLM
