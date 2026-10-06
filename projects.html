@@ -23,82 +23,97 @@
   <h1>Projects</h1>
   <p class="lead">Work that reflects my Artificial Intelligence and Advancing Computer Science degrees. Each entry lists its stack and the <a href="boards.html">program objectives</a> it supports.</p>
   <nav class="subnav">
-    <a href="#gridironiq">GridironIQ engine</a><a href="#srs">SRS</a><a href="#heroverse">HeroVerse AI</a><a href="#capeclash">Cape Clash</a><a href="#avatars">AI Avatars</a><a href="#generative">Generative media</a><a href="#csc262">C# OOP</a><a href="#csc382">C++ data structures</a><a href="#mediacast">Mediacast pipeline</a>
+    <a href="#index">Project index</a><a href="#gridironiq">GridironIQ engine</a><a href="#srs">SRS</a><a href="#heroverse">HeroVerse AI</a><a href="#capeclash">Cape Clash</a><a href="#avatars">AI Avatars</a><a href="#generative">Generative media</a><a href="#csc262">C# OOP</a><a href="#csc382">C++ data structures</a><a href="#mediacast">Mediacast pipeline</a>
   </nav>
 </div></section>
 
-<section class="wrap section" id="gridironiq">
+<section class="wrap section" id="index">
+  <h2>Project index</h2>
+  <p class="muted">Filter by type, or jump to a project. Each entry lists its date and the skills it demonstrates.</p>
+  <div class="filters" role="group" aria-label="Filter projects by type">
+    <button class="chip-btn active" data-filter="all">All</button><button class="chip-btn" data-filter="sip">SIP</button><button class="chip-btn" data-filter="ai">AI applications</button><button class="chip-btn" data-filter="genai">Generative AI</button><button class="chip-btn" data-filter="se">Software engineering</button><button class="chip-btn" data-filter="web">Web apps</button>
+  </div>
+  <div class="table-scroll"><table class="status index-table"><tr><th>Project</th><th>Type</th><th>Date</th><th>Skills</th></tr><tr data-type="sip"><td><a href="#gridironiq">GridironIQ rule engine</a></td><td>SIP · Software engineering</td><td>Aug 2026</td><td>Python · FastAPI · SQL · pytest · Claude API</td></tr><tr data-type="sip"><td><a href="#srs">GridironIQ SRS</a></td><td>SIP · Software engineering</td><td>Aug 2026</td><td>Requirements · UML · technical writing</td></tr><tr data-type="ai"><td><a href="#heroverse">HeroVerse AI</a></td><td>AI application</td><td>Apr 2026</td><td>JavaScript · Claude API · prompt design</td></tr><tr data-type="web"><td><a href="#capeclash">Cape Clash</a></td><td>Web app</td><td>Apr 2026</td><td>JavaScript · JSON data · data visualization</td></tr><tr data-type="genai"><td><a href="#avatars">AI Avatar Showcase</a></td><td>Generative AI</td><td>Apr 2026</td><td>HeyGen · D-ID · ElevenLabs · voice cloning</td></tr><tr data-type="genai"><td><a href="#generative">Legends of the Wall & Crown City Records</a></td><td>Generative AI</td><td>Apr 2026</td><td>DALL-E · Suno · Udio · HTML/CSS</td></tr><tr data-type="se"><td><a href="#csc262">Cave Explorer & Array Performance</a></td><td>Software engineering</td><td>Mar–Apr 2026</td><td>C# · .NET · OOP · Windows Forms</td></tr><tr data-type="se"><td><a href="#csc382">C++ Data Structures Labs</a></td><td>Software engineering</td><td>2026</td><td>C++ · BST/AVL · hash tables · testing</td></tr><tr data-type="ai"><td><a href="#mediacast">Hudson Mediacast Pipeline</a></td><td>AI application · personal</td><td>2026 · ongoing</td><td>Splunk · Python · FastAPI · Claude · ElevenLabs</td></tr></table></div>
+</section>
+
+<section class="wrap section" id="gridironiq" data-type="sip">
   <div class="project">
     <a href="img/gridironiq-ruling.png" target="_blank"><img class="media" src="img/gridironiq-ruling.png" alt="GridironIQ returning a Defensive Pass Interference ruling with rule citation"></a>
     <div>
       <p class="eyebrow">CSC318 · Software Engineering · Final Project implementation</p>
       <h2>GridironIQ — Rule-Grounded Penalty Engine</h2>
       <p>The working core of my SIP. A play description is parsed into machine-checkable facts, evaluated against a rule library, and returned as a determination with the rule citation that produced it. Four layers (presentation, API, service, data) with one-way dependencies; the language model sits behind an advisory interface, so the system still returns a complete, citable answer if the model is offline. Eight rules across pre-snap, passing, contact, and blocking fouls, with an audit log of every call.</p>
+      <ul class="meta"><li><b>Type</b> SIP · Software engineering</li><li><b>Date</b> Aug 2026</li></ul>
       <ul class="meta"><li><b>Stack</b> Python, FastAPI, SQLAlchemy, SQLite, Claude API, pytest, GitHub Actions</li><li><b>Tests</b> 50 passing · 95% coverage</li><li><b>Objectives</b> AI 1, AI 2, AI 6, ACS 1, ACS 3, ACS 5</li></ul>
       <div class="cta-row"><a class="btn small" href="https://github.com/TheBlackPanther616/Hudson_SIP_Website_/tree/main/code/gridironiq" target="_blank" rel="noopener">View code</a><a class="btn small ghost" href="sip.html#prototype">See it on the SIP page</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section alt" id="srs">
+<section class="wrap section alt" id="srs" data-type="sip">
   <div class="project">
     <a href="docs/Hudson_Module13_FinalProject_SRS.pdf" target="_blank"><img class="media" src="img/uml-usecase.png" alt="GridironIQ use case diagram from the SRS"></a>
     <div>
       <p class="eyebrow">CSC318 · Software Engineering · Module 13</p>
       <h2>GridironIQ — Software Requirements Specification</h2>
       <p>A full SRS, written solo: overview, scope and objectives, eleven functional and six non-functional requirements (performance, reliability, usability, security, explainability, portability), a use case model, a UML domain model and agent-subsystem class diagram, glossary, assumptions, and a requirements-traceability matrix. It fixed the core scope — <em>text play in, cited ruling out, LLM advisory only</em> — that FlagAI still builds on.</p>
+      <ul class="meta"><li><b>Type</b> SIP · Software engineering</li><li><b>Date</b> Aug 2026</li></ul>
       <ul class="meta"><li><b>Artifacts</b> SRS, UML (use case, class, sequence, deployment)</li><li><b>Objectives</b> ACS 1, AI 1</li></ul>
       <div class="cta-row"><a class="btn small" href="docs/Hudson_Module13_FinalProject_SRS.pdf" target="_blank">Read the SRS (PDF)</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section" id="heroverse">
+<section class="wrap section" id="heroverse" data-type="ai">
   <div class="project">
     <a href="https://theblackpanther616.github.io/Assignment-7.1-Final-Project-Deliverable/" target="_blank" rel="noopener"><img class="media" src="img/proj-heroverse.jpg" alt="HeroVerse AI hero database screen"></a>
     <div>
       <p class="eyebrow">Assignment 7.1 · Final project</p>
       <h2>HeroVerse AI</h2>
       <p>A superhero database with Claude built in: browse and filter heroes by universe and tier, ask "the Oracle" natural-language lore questions, run AI matchup analyses between two heroes, and generate complete original hero profiles from a short concept. The API key stays in the visitor's browser and is never stored on a server.</p>
+      <ul class="meta"><li><b>Type</b> AI application</li><li><b>Date</b> Apr 2026</li></ul>
       <ul class="meta"><li><b>Stack</b> HTML, CSS, JavaScript, Claude API</li><li><b>Objectives</b> AI 1, AI 2, AI 6</li></ul>
       <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/Assignment-7.1-Final-Project-Deliverable/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/Assignment-7.1-Final-Project-Deliverable" target="_blank" rel="noopener">Code</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section alt" id="capeclash">
+<section class="wrap section alt" id="capeclash" data-type="web">
   <div class="project">
     <a href="https://theblackpanther616.github.io/cape-clash/" target="_blank" rel="noopener"><img class="media" src="img/proj-capeclash.jpg" alt="Cape Clash stat comparison bars"></a>
     <div>
       <p class="eyebrow">CS final project · Web app</p>
       <h2>Cape Clash</h2>
       <p>A showdown calculator for my own original superhero universe (21 characters, including Grinlocke). Pick two fighters and get side-by-side bar charts across nine stats, automatic handling of the one "lower is better" stat, a computed verdict, and saved matchups that persist between visits. Data-driven and fully client-side.</p>
+      <ul class="meta"><li><b>Type</b> Web app</li><li><b>Date</b> Apr 2026</li></ul>
       <ul class="meta"><li><b>Stack</b> HTML, CSS, JavaScript, JSON data</li><li><b>Objectives</b> ACS 3, ACS 4</li></ul>
       <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/cape-clash/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/cape-clash" target="_blank" rel="noopener">Code</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section" id="avatars">
+<section class="wrap section" id="avatars" data-type="genai">
   <div class="project">
     <a href="https://theblackpanther616.github.io/AI-Avatars/" target="_blank" rel="noopener"><img class="media" src="img/proj-avatars.jpg" alt="AI Avatar Showcase landing page"></a>
     <div>
       <p class="eyebrow">Generative AI assignment</p>
       <h2>AI Avatar Showcase</h2>
       <p>Three synthetic presenters built with three generative tools: "Joseph 2.0," a face-and-voice clone of me (HeyGen); Dr. Nova, a retro-futurist science host (D-ID + ElevenLabs); and Coach Rex (HeyGen). Demonstrates voice cloning, face cloning, and full synthetic-human creation.</p>
+      <ul class="meta"><li><b>Type</b> Generative AI</li><li><b>Date</b> Apr 2026</li></ul>
       <ul class="meta"><li><b>Tools</b> HeyGen, D-ID, ElevenLabs</li><li><b>Objectives</b> AI 1</li></ul>
       <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/AI-Avatars/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/AI-Avatars" target="_blank" rel="noopener">Code</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section alt" id="generative">
+<section class="wrap section alt" id="generative" data-type="genai">
   <h2>Generative media sites</h2>
   <div class="two-col">
     <div>
       <a href="https://theblackpanther616.github.io/hip-hop-museum/" target="_blank" rel="noopener"><img class="media" src="img/proj-museum.jpg" alt="Legends of the Wall street-art museum"></a>
       <h3 style="margin-top:14px">Legends of the Wall</h3>
       <p>A virtual street-art museum of AI-generated hip-hop murals, each with its prompt and an interpretive description.</p>
+      <ul class="meta"><li><b>Type</b> Generative AI</li><li><b>Date</b> Apr 2026</li></ul>
       <ul class="meta"><li><b>Tools</b> DALL-E, HTML/CSS</li></ul>
       <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/hip-hop-museum/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/hip-hop-museum" target="_blank" rel="noopener">Code</a></div>
     </div>
@@ -106,13 +121,14 @@
       <a href="https://theblackpanther616.github.io/CrownCityRecords/" target="_blank" rel="noopener"><img class="media" src="img/proj-crowncity.jpg" alt="Crown City Records AI music label"></a>
       <h3 style="margin-top:14px">Crown City Records</h3>
       <p>An AI music label: ten original tracks across hip-hop, rap, R&amp;B, and pop generated with text-to-music tools, with genre filters and in-page players.</p>
+      <ul class="meta"><li><b>Type</b> Generative AI</li><li><b>Date</b> Apr 2026</li></ul>
       <ul class="meta"><li><b>Tools</b> Suno, Udio, Soundraw, HTML/JS</li></ul>
       <div class="cta-row"><a class="btn small" href="https://theblackpanther616.github.io/CrownCityRecords/" target="_blank" rel="noopener">Live site</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/CrownCityRecords" target="_blank" rel="noopener">Code</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section" id="csc262">
+<section class="wrap section" id="csc262" data-type="se">
   <div class="project">
     <svg viewBox="0 0 420 260" class="diagram" role="img" aria-label="Class diagram: WildCave and ShowCave inherit from Cave; WildCave implements ICaveReport">
       <g font-family="Inter,Segoe UI,Arial" font-size="13">
@@ -129,13 +145,14 @@
       <p class="eyebrow">CSC262 · Object-Oriented Programming (C#)</p>
       <h2>Cave Explorer &amp; Array Performance</h2>
       <p>Windows Forms applications in C# on .NET. <b>Cave Explorer V2</b> models caves with a base <code>Cave</code> class, derived <code>ShowCave</code> and <code>WildCave</code> classes that override display behavior, and an <code>ICaveReport</code> interface — inheritance, encapsulation, polymorphism, and interfaces in one program, with built-in unit checks. <b>Array Performance</b> measures and compares array operation timings through a GUI.</p>
+      <ul class="meta"><li><b>Type</b> Software engineering</li><li><b>Date</b> Mar–Apr 2026</li></ul>
       <ul class="meta"><li><b>Stack</b> C#, .NET, Windows Forms, Visual Studio</li><li><b>Objectives</b> ACS 2, ACS 5</li></ul>
       <div class="cta-row"><a class="btn small" href="https://github.com/TheBlackPanther616/CSC262-Assignment-3_1_Inheritance-Encapsulation-Polymorphism-and-Interface" target="_blank" rel="noopener">Cave Explorer code</a><a class="btn small ghost" href="https://github.com/TheBlackPanther616/CSC262-Assignment-1.1-Performance-Testing" target="_blank" rel="noopener">Performance code</a></div>
     </div>
   </div>
 </section>
 
-<section class="wrap section alt" id="csc382">
+<section class="wrap section alt" id="csc382" data-type="se">
   <div class="project">
     <svg viewBox="0 0 420 240" class="diagram" role="img" aria-label="Balanced AVL tree with balance factors">
       <g font-family="Inter,Segoe UI,Arial" font-size="14" font-weight="700">
@@ -150,12 +167,13 @@
       <p class="eyebrow">CSC382 · Data Structures &amp; Algorithms</p>
       <h2>C++ Data Structures Labs</h2>
       <p>Binary search tree and self-balancing AVL tree with a 70-assertion test suite; a hash table implementation; a comparative sorting project; and a doubly linked list used to model browser navigation (NavLink). Emphasis on object-oriented design, complexity analysis, and test-first verification.</p>
+      <ul class="meta"><li><b>Type</b> Software engineering</li><li><b>Date</b> 2026</li></ul>
       <ul class="meta"><li><b>Stack</b> C++17, unit tests</li><li><b>Objectives</b> ACS 5, ACS 6</li></ul>
     </div>
   </div>
 </section>
 
-<section class="wrap section" id="mediacast">
+<section class="wrap section" id="mediacast" data-type="ai">
   <div class="project">
     <svg viewBox="0 0 420 200" class="diagram" role="img" aria-label="Mediacast pipeline: Splunk search results to FastAPI sidecar to Claude summary to ElevenLabs voice to audio briefing">
       <defs><marker id="am" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#0B1F3A"/></marker></defs>
@@ -172,6 +190,7 @@
       <p class="eyebrow">Personal lab project</p>
       <h2>Hudson Mediacast Pipeline</h2>
       <p>A FastAPI sidecar that turns Splunk security data into spoken SOC briefings: search results are summarized by Claude and voiced by ElevenLabs through a <code>/briefing</code> endpoint. Phase 1 (static media Splunk app) and Phase 2 (sidecar) are in place; Phase 3 adds a <code>/video_briefing</code> endpoint.</p>
+      <ul class="meta"><li><b>Type</b> AI application · personal</li><li><b>Date</b> 2026 · ongoing</li></ul>
       <ul class="meta"><li><b>Stack</b> Splunk, Python, FastAPI, Claude API, ElevenLabs, MCP</li><li><b>Objectives</b> AI 1, AI 6, ACS 3</li></ul>
     </div>
   </div>
@@ -188,5 +207,11 @@
     </div>
   </div>
 </footer>
+<script>
+document.querySelectorAll('.chip-btn').forEach(function(b){b.addEventListener('click',function(){
+  var f=b.dataset.filter;document.querySelectorAll('.chip-btn').forEach(function(x){x.classList.toggle('active',x===b)});
+  document.querySelectorAll('main [data-type]').forEach(function(el){el.hidden=!(f==='all'||el.dataset.type===f)});
+});});
+</script>
 </body>
 </html>
